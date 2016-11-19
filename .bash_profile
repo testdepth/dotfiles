@@ -44,5 +44,23 @@ fi;
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults;
 
+
+#pyenv setup
+export PYENV_ROOT="${HOME}/.pyenv"
+
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    eval "$(pyenv init -)"
+fi
+
+
+# Initialising pyenv virtualenv
+if which pyenv-virtualenv-init > /dev/null
+then
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+
+
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
