@@ -8,6 +8,16 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# Install homebrew cask 
+brew install caskroom/cask/brew-cask 
+
+# Install Iterm
+brew cask install iterm2
+
+
+# Google Chrome
+brew cask install google-chrome
+
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
@@ -100,6 +110,28 @@ brew install tree
 brew install vbindiff
 brew install webkit2png
 brew install zopfli
+
+# Install useful Frontend tools
+brew install node
+
+# Install useful languages
+brew cask install java 
+brew install pyenv
+brew install pyenv-virtualenv
+
+# Install R and RStudio
+brew tap homebrew/science
+brew install R
+brew install Caskroom/cask/rstudio
+
+# Install Infrastructure toolchains
+brew install heroku-toolbelt
+
+
+
+# Install Databases
+brew install mongo
+brew install postgresql
 
 # Remove outdated versions from the cellar.
 brew cleanup
