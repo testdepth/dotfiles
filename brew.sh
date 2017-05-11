@@ -125,6 +125,7 @@ brew install Caskroom/cask/rstudio
 brew install heroku-toolbelt
 
 brew cask install keepingyouawake
+brew cask install flux
 
 # Install Databases
 brew install mongo
