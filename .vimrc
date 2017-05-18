@@ -95,6 +95,8 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
+inoremap jk <ESC>
+
 " Automatic commands
 if has("autocmd")
 	" Enable file type detection
