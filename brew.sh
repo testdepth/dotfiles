@@ -65,6 +65,7 @@ brew install woff2
 
 # Install other useful binaries.
 brew install ack
+brew install fzf
 brew install dark-mode
 #brew install exiv2
 brew install git
@@ -90,7 +91,8 @@ brew install Caskroom/cask/rstudio
 brew cask install keepingyouawake
 brew cask install flux
 brew install fish
-
+brew cask install cyberduck
+brew install youtube-dl
 # Install Databases
 brew install postgresql
 
