@@ -140,4 +140,4 @@ brew cleanup
 
 cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz
 
-curl https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt -o ~/.gitalias.txt
+curl https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt -o ~/.git
