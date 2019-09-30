@@ -25,3 +25,6 @@ else
 	fi;
 fi;
 unset doIt;
+
+
+git config --global include.path ~/.gitalias.txt

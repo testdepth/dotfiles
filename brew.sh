@@ -59,6 +59,7 @@ brew install grep
 brew install openssh
 brew install screen
 brew install gmp
+brew install fish
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -100,7 +101,7 @@ brew install git-lfs
 brew install gs
 brew install imagemagick --with-webp
 brew install lynx
-brew install p7zip
+brew install p7Gzip
 brew install pigz
 brew install pv
 brew install rename
@@ -127,9 +128,16 @@ brew install Caskroom/cask/rstudio
 
 brew cask install keepingyouawake
 brew cask install flux
-
+brew cask install slack
+brew cask install pritunl
+brew cask install visual-studio-code 
 # Install Databases
 brew install postgresql
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+
+cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz
+
+curl https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt -o ~/.gitalias.txt
