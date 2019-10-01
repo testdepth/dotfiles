@@ -47,11 +47,9 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
 
 # Install GnuPG to enable PGP-signing commits.
-brew install gnupg
+brew install gpg
 
 # Install more recent versions of some macOS tools.
 brew install vim --with-override-system-vi
@@ -70,6 +68,7 @@ brew install woff2
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng
 brew install bfg
+brew install tree
 brew install binutils
 brew install binwalk
 brew install cifer
@@ -78,7 +77,6 @@ brew install dns2tcp
 brew install fcrackzip
 brew install foremost
 brew install hashpump
-brew install hydra
 brew install john
 brew install knock
 brew install netpbm
@@ -101,7 +99,6 @@ brew install git-lfs
 brew install gs
 brew install imagemagick --with-webp
 brew install lynx
-brew install p7Gzip
 brew install pigz
 brew install pv
 brew install rename
@@ -125,14 +122,28 @@ brew tap homebrew/science
 brew install R
 brew install Caskroom/cask/rstudio
 
+brew install dbt
+brew install wget
 
+
+brew cask install postman
+brew install awscli
+brew cask install anaconda
 brew cask install keepingyouawake
 brew cask install flux
 brew cask install slack
 brew cask install pritunl
 brew cask install visual-studio-code 
+brew cask install cyberduck
+brew install lastpass-cli
+brew cask install cheatsheet
+
 # Install Databases
 brew install postgresql
+
+
+# Docker
+brew cask install docker
 
 # Remove outdated versions from the cellar.
 brew cleanup
