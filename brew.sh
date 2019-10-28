@@ -137,6 +137,7 @@ brew cask install visual-studio-code
 brew cask install cyberduck
 brew install lastpass-cli
 brew cask install cheatsheet
+brew install mas
 
 # Install Databases
 brew install postgresql
