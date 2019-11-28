@@ -127,6 +127,7 @@ brew install wget
 
 
 brew cask install postman
+brew install terraform
 brew install awscli
 brew cask install anaconda
 brew cask install keepingyouawake
