@@ -27,7 +27,11 @@ cd ~/dotfiles/fish
 bash setup.sh
 ```
 
+5. Setup Conda environment
 
+```
+conda env create -f ~/dotfiles/packages/global-ds-py3.7-environment.yml
+```
 
 
 
