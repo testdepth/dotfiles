@@ -111,7 +111,8 @@ brew cask install cyberduck
 brew install lastpass-cli
 brew cask install cheatsheet
 brew install mas
-
+brew cask install spotify
+brew install cask 'google-drive'
 # Install Databases
 brew install postgresql
 
