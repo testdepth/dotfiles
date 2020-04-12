@@ -25,8 +25,8 @@ set -x -g PATH ~/.composer/vendor/bin $PATH
 # Pipenv completions
 eval (pipenv --completion)
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 eval /usr/local/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
-

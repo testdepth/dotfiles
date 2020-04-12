@@ -1,3 +1,52 @@
+# Nehiljain's dotfiles
+
+Setup Checklist
+1. Install homebrew
+
+    ```bash
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install git
+    ```
+
+2. Clone this repository
+
+  ```
+  git clone git@github.com:nehiljain/dotfiles.git
+  ```
+3. Run setup script for packages to install global packages
+
+``` bash
+cd ~/dotfiles/packages
+bash setup.sh
+```
+
+4. Run setup script for fish to install fish and setup fish as your default shell
+
+``` bash
+cd ~/dotfiles/fish
+bash setup.sh
+```
+
+5. Setup Conda environment
+
+```
+conda env create -f ~/dotfiles/packages/global-ds-py3.7-environment.yml
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Borrowed from 
 # Mathias’s dotfiles
 
 ![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
