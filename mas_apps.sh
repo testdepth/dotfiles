@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Bear
 mas install 1096128050
 # Pomodone App

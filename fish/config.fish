@@ -16,8 +16,17 @@ set -x -g PATH (brew --prefix findutils)/libexec/gnubin $PATH
 # User bin folder
 set -x -g PATH ~/bin $PATH /usr/local/sbin
 
+# Add anaconda binaries to path
+set -U fish_user_paths $fish_user_paths /usr/local/anaconda3/bin
+
 # Composer
 set -x -g PATH ~/.composer/vendor/bin $PATH
 
 # Pipenv completions
 eval (pipenv --completion)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /usr/local/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+

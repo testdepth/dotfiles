@@ -36,4 +36,4 @@ alias fs="stat -f \"%z bytes\""
 
 
 # Snaptravel st command
-alias st="python2 /Users/nehiljain/snaptravel/devops/st.py"
+alias st="python3 /Users/nehiljain/snaptravel/devops/st.py"
