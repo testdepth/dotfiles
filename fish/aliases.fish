@@ -28,19 +28,19 @@ alias gl='git pull'
 #compdef _git gl=git-pull
 alias gup='git pull --rebase'
 #compdef _git gup=git-fetch
-alias gpu=git push -u origin (git_current_branch)
-#compdef _git gp=git-push
-alias gcb=git checkout -b
+alias gpu='git push -u origin (git_current_branch)'
+#compdef _git gpu=git-push
+alias gcb='git checkout -b'
 
-alias gcom=git checkout master
+alias gcom='git checkout master'
 
-alias ga=git add
+alias ga='git add'
 
-alias gaa=git add --all
+alias gaa='git add --all'
 
-alias grm=git rm
+alias grm='git rm'
 
-alias grmc=git rm --cached
+alias grmc='git rm --cached'
 
 
 
