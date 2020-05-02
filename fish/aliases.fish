@@ -41,6 +41,8 @@ alias gaa='git add --all'
 alias grm='git rm'
 
 alias grmc='git rm --cached'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
 
 
 
