@@ -84,7 +84,7 @@ brew cask install ngrok
 
 # Install useful Frontend tools
 brew install node
-
+brew install hugo
 # Install useful languages
 brew install go
 brew cask install java 

@@ -1,4 +1,8 @@
 # Nehiljain's dotfiles
+This is my personal dotfiles which help me being productive at using my mac.
+
+
+## Getting Started
 
 Setup Checklist
 1. Install homebrew
@@ -34,6 +38,11 @@ conda env create -f ~/dotfiles/packages/global-ds-py3.7-environment.yml
 ```
 
 
+## Author
+
+| [![twitter/nehiljain](https://s.gravatar.com/avatar/7e96067ec286bc1665a4985fb52fdead?s=80)](http://twitter.com/nehiljain "Follow @nehiljain on Twitter") |
+|---|
+| [Nehil Jain](https://nehiljain.com/) |
 
 
 
@@ -137,11 +146,6 @@ Some of the functionality of these dotfiles depends on formulae installed by `br
 Suggestions/improvements
 [welcome](https://github.com/mathiasbynens/dotfiles/issues)!
 
-## Author
-
-| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
-|---|
-| [Mathias Bynens](https://mathiasbynens.be/) |
 
 ## Thanks to…
 
