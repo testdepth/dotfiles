@@ -31,6 +31,7 @@ alias gup='git pull --rebase'
 alias gpu='git push -u origin (git_current_branch)'
 #compdef _git gpu=git-push
 alias gcb='git checkout -b'
+alias gc='git checkout '
 
 alias gcom='git checkout master'
 
