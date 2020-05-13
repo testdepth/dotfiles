@@ -103,6 +103,7 @@ brew install terraform
 brew install awscli
 brew cask install anaconda
 brew cask install keepingyouawake
+brew install lastpass-cli
 brew cask install flux
 brew cask install slack
 brew cask install pritunl
