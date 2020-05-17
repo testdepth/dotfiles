@@ -86,6 +86,8 @@ brew cask install ngrok
 brew install node
 brew install hugo
 # Install useful languages
+brew install python
+brew install python3
 brew install go
 brew cask install java 
 brew install pyenv
