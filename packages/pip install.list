@@ -1,4 +1,0 @@
-pylint
-pipenv
-boto3
-awscli

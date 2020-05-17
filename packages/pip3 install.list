@@ -1,1 +1,5 @@
-pip install.list
+pylint
+pipenv
+boto3
+awscli
+poetry

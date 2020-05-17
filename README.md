@@ -56,6 +56,9 @@ conda env create -f ~/dotfiles/packages/global-ds-py3.7-environment.yml
 
 
 Borrowed from 
+
+https://github.com/rkalis/dotfiles/blob/master/macos/setup.sh
+
 # Mathias’s dotfiles
 
 ![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
