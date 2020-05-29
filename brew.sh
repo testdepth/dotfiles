@@ -93,6 +93,9 @@ brew cask install java
 brew install pyenv
 brew install pyenv-virtualenv
 
+# for shapely
+brew install goes
+
 # Install R and RStudio
 brew install R
 brew install Caskroom/cask/rstudio
