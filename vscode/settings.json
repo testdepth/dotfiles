@@ -15,10 +15,10 @@
     "editor.detectIndentation": false,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "python.linting.pylintEnabled": true,
-    "python.linting.pep8Enabled": false,
-    "python.pythonPath": "/usr/local/bin/python3",
+    "python.linting.pycodestyleEnabled": false,
+    "python.pythonPath": "/usr/local/anaconda3/envs/datapipeline37/bin/python",
     "git.autofetch": true,
     "gitlens.keymap": "alternate",
     "workbench.settings.editor": "json",
@@ -27,4 +27,5 @@
       "*.cash": "solidity"
     },
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "markdown.extension.preview.autoShowPreviewToSide": true
 }
