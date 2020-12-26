@@ -53,6 +53,8 @@ brew install gpg
 
 # Install more recent versions of some macOS tools.
 brew install vim
+brew install tmux
+brew install reattach-to-user-namespace
 brew install grep
 brew install openssh
 brew install screen
