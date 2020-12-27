@@ -22,7 +22,6 @@ brew install caskroom/cask/brew-cask
 # Install Iterm
 brew cask install iterm2
 
-
 # Google Chrome
 brew cask install google-chrome
 
@@ -56,6 +55,8 @@ brew install vim
 brew install tmux
 brew install reattach-to-user-namespace
 brew install grep
+brew install ripgrep
+brew install fzf
 brew install openssh
 brew install screen
 brew install gmp
@@ -95,9 +96,6 @@ brew cask install java
 brew install pyenv
 brew install pyenv-virtualenv
 
-# for shapely
-brew install goes
-
 # Install R and RStudio
 brew install R
 brew install Caskroom/cask/rstudio
@@ -120,6 +118,7 @@ brew install lastpass-cli
 brew cask install cheatsheet
 brew install mas
 brew cask install spotify
+brew install shpotify
 brew install cask 'google-drive'
 # Install Databases
 brew install postgresql
