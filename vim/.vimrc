@@ -15,6 +15,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'preservim/nerdtree'
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -153,19 +154,31 @@ nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
-
-
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>l :BLines<CR>
+nnoremap <silent> <Leader>L :Lines<CR>
+nnoremap <silent> <Leader>maps :Maps<CR>
 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
+" https://github.com/amix/vimrc/blob/master/vimrcs/plugins_config.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=> Vim auto save
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:auto_save = 1
+let g:auto_save_events = ["InsertLeave", "CursorHold", "CursorHoldI"]
+

@@ -60,6 +60,3 @@ alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo 
 # File size
 alias fs="stat -f \"%z bytes\""
 
-
-# Snaptravel st command
-alias st="python3 /Users/nehiljain/snaptravel/devops/st.py"

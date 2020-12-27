@@ -16,8 +16,8 @@ brew upgrade
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
 
-# Install homebrew cask 
-brew install caskroom/cask/brew-cask 
+# Install homebrew cask
+brew install caskroom/cask/brew-cask
 
 # Install Iterm
 brew cask install iterm2
@@ -92,7 +92,7 @@ brew install hugo
 brew install python
 brew install python3
 brew install go
-brew cask install java 
+brew cask install java
 brew install pyenv
 brew install pyenv-virtualenv
 
@@ -111,15 +111,12 @@ brew cask install keepingyouawake
 brew install lastpass-cli
 brew cask install flux
 brew cask install slack
-brew cask install pritunl
-brew cask install visual-studio-code 
+brew cask install visual-studio-code
 brew cask install cyberduck
-brew install lastpass-cli
 brew cask install cheatsheet
 brew install mas
 brew cask install spotify
 brew install shpotify
-brew install cask 'google-drive'
 # Install Databases
 brew install postgresql
 
