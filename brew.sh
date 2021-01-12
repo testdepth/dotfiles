@@ -17,13 +17,13 @@ brew upgrade
 BREW_PREFIX=$(brew --prefix)
 
 # Install homebrew cask
-brew install caskroom/cask/brew-cask
+brew install homebrew/cask
 
 # Install Iterm
-brew cask install iterm2
+brew install --cask iterm2
 
 # Google Chrome
-brew cask install google-chrome
+brew install --cask google-chrome
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -51,7 +51,7 @@ fi;
 brew install gpg
 
 # Install more recent versions of some macOS tools.
-brew install vim
+brew install vim --with-override-system-vi
 brew install tmux
 brew install reattach-to-user-namespace
 brew install grep
@@ -73,6 +73,7 @@ brew install bfg
 brew install tree
 brew install nmap
 brew install xz
+brew install pigz
 
 # Install other useful binaries.
 brew install ack
@@ -83,7 +84,7 @@ brew install pigz
 brew install pv
 brew install rename
 brew install ssh-copy-id
-brew cask install ngrok
+brew install --cask ngrok
 
 # Install useful Frontend tools
 brew install node
@@ -92,37 +93,38 @@ brew install hugo
 brew install python
 brew install python3
 brew install go
-brew cask install java
+brew install --cask java
 brew install pyenv
 brew install pyenv-virtualenv
 
 # Install R and RStudio
 brew install R
-brew install Caskroom/cask/rstudio
+brew install rstudio
 
 brew install wget
 
 
-brew cask install postman
+brew install --cask postman
 brew install terraform
 brew install awscli
-brew cask install anaconda
-brew cask install keepingyouawake
+brew install --cask anaconda
+brew install --cask keepingyouawake
 brew install lastpass-cli
-brew cask install flux
-brew cask install slack
-brew cask install visual-studio-code
-brew cask install cyberduck
-brew cask install cheatsheet
+brew install --cask flux
+brew install --cask slack
+brew install --cask visual-studio-code
+brew install --cask cyberduck
+brew install --cask cheatsheet
 brew install mas
-brew cask install spotify
+brew install --cask spotify
 brew install shpotify
+brew install pandoc
 # Install Databases
 brew install postgresql
 
 
 # Docker
-brew cask install docker
+brew install --cask docker
 
 # Remove outdated versions from the cellar.
 brew cleanup
