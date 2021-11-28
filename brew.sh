@@ -117,6 +117,7 @@ brew install --cask cyberduck
 brew install --cask cheatsheet
 brew install mas
 brew install --cask spotify
+brew install --cask rectangle
 brew install shpotify
 brew install pandoc
 # Install Databases
@@ -130,6 +131,5 @@ brew install --cask docker
 brew cleanup
 
 
-cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz
 
 curl https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt -o ~/.git
