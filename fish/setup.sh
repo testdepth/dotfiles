@@ -50,3 +50,6 @@ if set_fish_shell; then
 else
     error "Failed setting up fish shell."
 fi
+
+
+fzf_configure_bindings --directory=\cf
