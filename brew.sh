@@ -51,7 +51,8 @@ fi;
 brew install gpg
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim
+brew install neovim
 brew install tmux
 brew install reattach-to-user-namespace
 brew install grep
@@ -68,12 +69,8 @@ brew install sfnt2woff
 brew install sfnt2woff-zopfli
 brew install woff2
 
-# Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install bfg
-brew install tree
-brew install nmap
-brew install xz
-brew install pigz
+
 
 # Install other useful binaries.
 brew install ack
@@ -92,24 +89,17 @@ brew install hugo
 # Install useful languages
 brew install python
 brew install python3
-brew install go
 brew install --cask java
 brew install pyenv
 brew install pyenv-virtualenv
-
-# Install R and RStudio
-brew install R
-brew install rstudio
 
 brew install wget
 
 
 brew install --cask postman
 brew install terraform
-brew install awscli
 brew install --cask anaconda
 brew install --cask keepingyouawake
-brew install lastpass-cli
 brew install --cask flux
 brew install --cask slack
 brew install --cask visual-studio-code
@@ -118,7 +108,6 @@ brew install --cask cheatsheet
 brew install mas
 brew install --cask spotify
 brew install --cask rectangle
-brew install shpotify
 brew install pandoc
 # Install Databases
 brew install postgresql
