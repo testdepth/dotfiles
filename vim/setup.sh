@@ -14,15 +14,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 success "Installed Vim Plug"
 
-mkdir -p ~/.vim/backups
-mkdir -p ~/.vim/colors
-mkdir -p ~/.vim/swaps
-mkdir -p ~/.vim/syntax
-mkdir -p ~/.vim/undo
+mkdir -p ~/.config
+mkdir -p  ~/.config/nvim
 
-find . -name ".vim*" | while read fn; do
-    fn=$(basename $fn)
-    symlink "$SOURCE/$fn" "$DESTINATION/$fn"
-done
+symlink $SOURCE/init.vim $DESTINATION/.config/nvim/init.vim
 
 success "Finished setting up Vim."
