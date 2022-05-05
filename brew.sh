@@ -58,6 +58,8 @@ brew install reattach-to-user-namespace
 brew install grep
 brew install ripgrep
 brew install fzf
+brew install bat
+brew install fd
 brew install openssh
 brew install screen
 brew install gmp
