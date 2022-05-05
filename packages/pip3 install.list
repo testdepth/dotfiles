@@ -1,5 +1,4 @@
 pylint
-pipenv
-boto3
-awscli
 poetry
+black
+invoke
