@@ -9,9 +9,6 @@ sudo -v
 
 . ../scripts/functions.sh
 
-# info "Installing Brewfile packages..."
-# brew bundle
-# success "Finished installing Brewfile packages."
 
 find * -name "*.list" | while read fn; do
     cmd="${fn%.*}"
@@ -22,7 +19,8 @@ find * -name "*.list" | while read fn; do
         then continue
         fi
         substep_info "Installing $package..."
-        $cmd $package
+        info "going to run $cmd $package"
+	$cmd $package
     done < "$fn"
     success "Finished installing $1 packages."
 done

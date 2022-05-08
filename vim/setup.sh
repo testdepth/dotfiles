@@ -18,5 +18,6 @@ mkdir -p ~/.config
 mkdir -p  ~/.config/nvim
 
 symlink $SOURCE/init.vim $DESTINATION/.config/nvim/init.vim
+nvim --headless +PlugInstall +qall
 
 success "Finished setting up Vim."

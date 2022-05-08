@@ -18,7 +18,8 @@ mkdir -p "$DESTINATION/functions"
 mkdir -p "$DESTINATION/completions"
 
 find * -name "*.fish" -o -name "fishfile" | while read fn; do
-    symlink "$SOURCE/$fn" "$DESTINATION/$fn"
+    info "$SOURCE/$fn to $DESTINATION/$fn"
+    # symlink "$SOURCE/$fn" "$DESTINATION/$fn"
 done
 clear_broken_symlinks "$DESTINATION"
 
@@ -45,11 +46,5 @@ set_fish_shell() {
         fish -c "setup"
 }
 
-if set_fish_shell; then
-    success "Successfully set up fish shell."
-else
-    error "Failed setting up fish shell."
-fi
 
-
-fzf_configure_bindings --directory=\cf
+# fzf_configure_bindings --directory=\cf
