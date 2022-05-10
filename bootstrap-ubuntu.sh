@@ -40,6 +40,10 @@ install	libglib2.0-dev
 install	libreadline-dev
 install	libssl-dev
 install	libyaml-dev
+install zlib1g-dev
+install libbz2-dev
+install libreadline-dev
+install libsqlite3-dev
 install	make
 install	patch
 install	unzip
@@ -66,7 +70,7 @@ install jpegoptim
 install optipng
 
 # Run all scripts in programs/
-for f in programs/*.sh; do bash "$f" -H; done
+# for f in programs/*.sh; do bash "$f" -H; done
 
 # Get all upgrades
 sudo apt upgrade -y
