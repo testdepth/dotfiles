@@ -21,6 +21,7 @@ install () {
 install build-essential
 install neovim
 install python3-pip
+install python-is-python3
 install python3-dev
 install autoconf
 install	automake
