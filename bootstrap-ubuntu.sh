@@ -18,6 +18,7 @@ install () {
 }
 
 # Basics
+install build-essential
 install neovim
 install python3-pip
 install python3-dev
