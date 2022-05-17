@@ -63,6 +63,7 @@ sudo apt install nmap -y
 sudo apt install openvpn -y
 sudo apt install tree -y
 sudo apt install wget -y
+sudo apt install fish -y
 
 # Run all scripts in programs/
 # for f in programs/*.sh; do bash "$f" -H; done
