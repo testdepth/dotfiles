@@ -18,57 +18,51 @@ install () {
 }
 
 # Basics
-install build-essential
-install neovim
-install python3-pip
-install python-is-python3
-install python3-dev
-install autoconf
-install	automake
-install bzip2
-install dpkg-dev
-install file
-install g++
-install gcc
-install	libbz2-dev
-install	libc6-dev
-install	libcurl4-openssl-dev
-install	libdb-dev
-install	libevent-dev
-install	libffi-dev
-install	libgdbm-dev
-install	libglib2.0-dev
-install	libreadline-dev
-install	libssl-dev
-install	libyaml-dev
-install zlib1g-dev
-install libbz2-dev
-install libreadline-dev
-install libsqlite3-dev
-install	make
-install	patch
-install	unzip
-install	xz-utils
-install	zlib1g-dev
-install awscli
-install chrome-gnome-shell
-install curl
-install exfat-utils
-install file
-install git
-install htop
-install jq
-install yq
-install nmap
-install openvpn
-install tree
-install vim
-install wget
-
-# Image processing
-install gimp
-install jpegoptim
-install optipng
+sudo apt install build-essential -y
+sudo apt install neovim -y
+sudo apt install python3-pip -y
+sudo apt install python-is-python3 -y
+sudo apt install python3-dev -y
+sudo apt install autoconf -y
+sudo apt install automake -y
+sudo apt install bzip2 -y
+sudo apt install dpkg-dev -y
+sudo apt install file -y
+sudo apt install g++ -y
+sudo apt install gcc -y
+sudo apt install libbz2-dev -y
+sudo apt install libc6-dev -y
+sudo apt install libcurl4-openssl-dev -y
+sudo apt install libdb-dev -y
+sudo apt install libevent-dev -y
+sudo apt install libffi-dev -y
+sudo apt install libgdbm-dev -y
+sudo apt install libglib2.0-dev -y
+sudo apt install libreadline-dev -y
+sudo apt install libssl-dev -y
+sudo apt install libyaml-dev -y
+sudo apt install zlib1g-dev -y
+sudo apt install libbz2-dev -y
+sudo apt install libreadline-dev -y
+sudo apt install libsqlite3-dev -y
+sudo apt install make -y
+sudo apt install patch -y
+sudo apt install unzip -y
+sudo apt install xz-utils -y
+sudo apt install zlib1g-dev -y
+sudo apt install awscli -y
+sudo apt install chrome-gnome-shell -y
+sudo apt install curl -y
+sudo apt install exfat-utils -y
+sudo apt install file -y
+sudo apt install git -y
+sudo apt install htop -y
+sudo apt install jq -y
+sudo apt install yq -y
+sudo apt install nmap -y
+sudo apt install openvpn -y
+sudo apt install tree -y
+sudo apt install wget -y
 
 # Run all scripts in programs/
 # for f in programs/*.sh; do bash "$f" -H; done
