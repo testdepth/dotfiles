@@ -25,9 +25,6 @@ set -U fish_user_paths $fish_user_paths /usr/local/anaconda3/bin
 # Composer
 set -x -g PATH ~/.composer/vendor/bin $PATH
 
-# Pipenv completions
-eval (pipenv --completion)
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

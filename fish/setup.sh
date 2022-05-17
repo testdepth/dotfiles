@@ -46,5 +46,13 @@ set_fish_shell() {
         fish -c "setup"
 }
 
+<<<<<<< HEAD
 
 # fzf_configure_bindings --directory=\cf
+=======
+if set_fish_shell; then
+    success "Successfully set up fish shell."
+else
+    error "Failed setting up fish shell."
+fi
+>>>>>>> 1c62559 (Improvements to fish terminal)
