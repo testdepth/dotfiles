@@ -1,6 +1,3 @@
 pylint
-boto3
-awscli
-poetry
 black
 invoke
