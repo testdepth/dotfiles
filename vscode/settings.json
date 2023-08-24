@@ -1,40 +1,72 @@
-// Place your settings in this file to overwrite the default settings
 {
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.rulers": [79],
-    "editor.roundedSelection": false,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.maxColumn": 100,
-    "editor.renderWhitespace": "boundary",
-    "editor.renderIndentGuides": true,
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.detectIndentation": false,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "window.zoomLevel": 1,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pycodestyleEnabled": false,
-    "python.pythonPath": "/usr/local/anaconda3/envs/tap-jotform-2/bin/python",
-    "git.autofetch": true,
-    "gitlens.keymap": "alternate",
-    "workbench.settings.editor": "json",
-    "workbench.settings.useSplitJSON": true,
-    "files.associations": {
-      "*.cash": "solidity"
-    },
-    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-    "markdown.extension.preview.autoShowPreviewToSide": true,
-    "vim.easymotion": true,
-    "vim.surround": true,
-    "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false,
-    "vim.insertModeKeyBindings": [
-      {
-          "before": ["j", "k"],
-          "after": ["<esc>"]
-      }
+  "workbench.editorAssociations": {
+      "*.ipynb": "jupyter-notebook"
+  },
+  "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
+  "workbench.colorTheme": "Default High Contrast",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "jupyter.interactiveWindowMode": "perFile",
+  "launch": {
+
+
+      "configurations": [
+          {
+              "name": "Python: Pytest",
+              "type": "python",
+              "request": "launch",
+              "purpose": ["debug-test"],
+              "console": "integratedTerminal",
+          },
+      ],
+      "compounds": []
+  },
+  "azure.tenant": "",
+  "azure.cloud": "AzureCloud",
+  "notebook.cellToolbarLocation": {
+      "default": "right",
+      "jupyter-notebook": "left"
+  },
+  "python.defaultInterpreterPath": "C:\\Users\\mark_\\anaconda3\\python.exe",
+  "autoDocstring.docstringFormat": "numpy",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "todo-tree.general.tags": [
+      "BUG",
+      "HACK",
+      "FIXME",
+      "TODO",
+      "XXX",
+      "[ ]",
+      "[x]"
   ],
-  "liveshare.presence": true
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "jupyter.askForKernelRestart": false,
+  "sourcery.token": "user_fzCsz8skH_D9OgtqGfMvU4_zPbM2D1DJLMkD6Xpa_zjGM4c414yweDsWfrQ",
+  "redhat.telemetry.enabled": false,
+  "git.autofetch": true,
+  "liveshare.allowGuestTaskControl": true,
+  "liveshare.publishWorkspaceInfo": true,
+  "pythonTestExplorer.testFramework": "pytest",
+  "python.testing.pytestEnabled": true,
+  "databricks.connection.default.apiRootUrl": "https://adb-8569799800606718.18.azuredatabricks.net/",
+  "databricks.connection.default.displayName": "non-prod",
+  "databricks.connection.default.localSyncFolder": "C:\\mySyncFolder",
+  "databricks.lastActiveConnection": "non-prod",
+  "databricks.connection.default.personalAccessTokenSecure": {
+      "keyTarSettingName": "non-prod-API-Token"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "notebook.output.textLineLimit": 200,
+  "yaml.schemas": {
+      "file:///home/matkins1/.vscode-server/extensions/docsmsft.docs-yaml-0.2.9/out/yaml-support/toc.schema.json": "/toc\\.yml/i"
+  },
+  "editor.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.inheritEnv": false,
+  "python.testing.pytestPath": "python -m pytest",
+
+  
+  
+
 }

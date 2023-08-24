@@ -1,4 +1,4 @@
-# Nehiljain's dotfiles
+# Mark's dotfiles
 This is my personal dotfiles which help me being productive at using my mac.
 
 
@@ -38,26 +38,9 @@ conda env create -f ~/dotfiles/packages/global-ds-py3.7-environment.yml
 ```
 
 
-## Author
-
-| [![twitter/nehiljain](https://s.gravatar.com/avatar/7e96067ec286bc1665a4985fb52fdead?s=80)](http://twitter.com/nehiljain "Follow @nehiljain on Twitter") |
-|---|
-| [Nehil Jain](https://nehiljain.com/) |
-
-
-
-
-
-
-
-
-
-
-
-
 Borrowed from 
 
-https://github.com/rkalis/dotfiles/blob/master/macos/setup.sh
+https://github.com/rkalis/nehiljain/blob/master/macos/setup.sh
 
 # Mathias’s dotfiles
 
