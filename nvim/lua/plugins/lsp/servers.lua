@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   local lspconfig = require("lspconfig")
-  --local languages = require("languages")
+  local languages = require("languages")
 
   for _, language_impl in pairs(vim.tbl_keys(languages)) do
     local language = languages[language_impl]
