@@ -17,7 +17,7 @@ M.virtual_text = {
 
 M.virtual_lines = {
   only_current_line = false,
-  highlight_whole_line = false,
+  highlight_whole_line = true,
 }
 
 M.config_diagnostics = {
