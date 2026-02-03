@@ -32,18 +32,28 @@ ssh -T git@github.com
 
 ### Step 3: Install Nix
 
+Install Nix via the recommended multi-user installation. Open a Terminal (by pressing [Cmd] + [Space] and typing terminal) and run the following command:
+
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
+
 **Restart terminal** after installation.
 
-### Step 4: Install direnv
+### Step 4: Enable Flakes
+
+```bash
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+```
+
+### Step 5: Install direnv
 
 ```bash
 nix profile install nixpkgs#direnv
 ```
 
-### Step 5: Clone & Setup Dotfiles
+### Step 6: Clone & Setup Dotfiles
 
 ```bash
 git clone git@github.com:testdepth/dotfiles.git ~/.dotfiles
@@ -52,14 +62,14 @@ direnv allow
 ```
 Wait for devenv to build (~2-5 min first time).
 
-### Step 6: Apply Configuration
+### Step 7: Apply Configuration
 
 ```bash
 apply
 ```
 Or: `nix run home-manager -- switch --flake .#macbook`
 
-### Step 7: Set Fish as Default Shell
+### Step 8: Set Fish as Default Shell
 
 ```bash
 echo $(which fish) | sudo tee -a /etc/shells
@@ -67,14 +77,14 @@ chsh -s $(which fish)
 ```
 **Restart terminal** to use fish.
 
-### Step 8: Install Ghostty
+### Step 9: Install Ghostty
 
 Download from https://ghostty.org/download or:
 ```bash
 brew install --cask ghostty
 ```
 
-### Step 9: Install LazyVim (Neovim)
+### Step 10: Install LazyVim (Neovim)
 
 ```bash
 git clone https://github.com/LazyVim/starter ~/.config/nvim
@@ -82,7 +92,7 @@ rm -rf ~/.config/nvim/.git
 nvim  # Wait for plugins to install, then :q
 ```
 
-### Step 10: Install Claude Code (Optional)
+### Step 11: Install Claude Code (Optional)
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -95,6 +105,7 @@ npm install -g @anthropic-ai/claude-code
 | Xcode tools | `xcode-select --install` | 5-10 min |
 | SSH key | `ssh-keygen -t ed25519` | 1 min |
 | Nix | `curl ... \| sh` | 2-3 min |
+| Enable flakes | `echo ... > ~/.config/nix/nix.conf` | 10 sec |
 | direnv | `nix profile install nixpkgs#direnv` | 30 sec |
 | Clone & setup | `git clone ... && direnv allow` | 2-5 min |
 | Apply config | `apply` | 2-5 min |
@@ -183,6 +194,7 @@ Uses [LazyVim starter](https://github.com/LazyVim/starter). See [modules/editor/
 |---------------|-------------|
 | `macbook` | macOS Apple Silicon |
 | `macbook-intel` | macOS Intel |
+| `shark` | macOS Apple Silicon (shark) |
 | `linux` | Linux x86_64 |
 
 ## Commands

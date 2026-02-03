@@ -68,6 +68,16 @@
             extraSpecialArgs = { inherit inputs; };
           };
 
+          # shark - macOS Apple Silicon
+          "shark" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            modules = [
+              ./home.nix
+              ./hosts/shark
+            ];
+            extraSpecialArgs = { inherit inputs; };
+          };
+
           # macOS Intel
           "macbook-intel" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.x86_64-darwin;

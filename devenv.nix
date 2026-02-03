@@ -41,8 +41,9 @@
   scripts = {
     # Apply home-manager config
     apply.exec = ''
-      echo "Applying home-manager configuration..."
-      nix run home-manager -- switch --flake .#macbook
+      HOST=''${1:-$(hostname -s)}
+      echo "Applying home-manager configuration for $HOST..."
+      nix run home-manager -- switch --flake ".#$HOST"
     '';
 
     # Update flake inputs
