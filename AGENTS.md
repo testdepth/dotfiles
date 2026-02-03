@@ -261,6 +261,23 @@ use flake
 
 ---
 
+## Dotfiles Reproducibility
+
+**All configuration changes must be reproducible via `apply` or documented setup commands.**
+
+When making changes to this dotfiles repo:
+
+1. **Prefer Nix-managed configs** - Use `home.file`, `programs.*`, or `xdg.configFile` in home-manager modules
+2. **No ad-hoc local changes** - Don't make manual changes that only exist on the local machine
+3. **Symlink repo files** - Use `home.file` with `source` to symlink config files from this repo
+4. **Document manual steps** - If something can't be Nix-managed (e.g., LazyVim clone), document it in README.md
+
+Example - adding a new config file:
+```nix
+# In home.nix or a module
+home.file.".config/app/config.toml".source = ./config/app.toml;
+```
+
 ## Best Practices Summary
 
 1. **Always test changes** before marking complete
@@ -268,3 +285,4 @@ use flake
 3. **Keep changes minimal** - touch only what's necessary
 4. **Document complex logic** - but prefer self-documenting code
 5. **Run linters** before committing
+6. **Verify reproducibility** - run `apply` on a fresh shell to confirm changes work

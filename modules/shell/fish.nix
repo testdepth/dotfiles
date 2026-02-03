@@ -28,11 +28,17 @@
 
       # Git shortcuts
       g = "git";
+      ga = "git add";
+      gau = "git add -u";
+      gb = "git branch";
+      gco = "git checkout";
+      gcm = "git commit -m";
       gs = "git status";
       gd = "git diff";
       gl = "git log --oneline -20";
       gp = "git push";
       gpl = "git pull";
+      pub = "git push --set-upstream origin";
 
       # Editor
       v = "nvim";
@@ -46,6 +52,11 @@
 
     # Environment variables
     shellInit = ''
+      # Ensure nix profile is in PATH early (needed for GUI-launched terminals)
+      if test -d ~/.nix-profile/bin
+        fish_add_path --prepend ~/.nix-profile/bin
+      end
+
       # Editor
       set -gx EDITOR nvim
       set -gx VISUAL nvim
@@ -60,9 +71,6 @@
 
     # Interactive shell config
     interactiveShellInit = ''
-      # Initialize zoxide (smart cd)
-      zoxide init fish | source
-
       # FZF key bindings (if fzf.fish is available)
       if type -q fzf_configure_bindings
         fzf_configure_bindings --directory=\cf --git_log=\cl --git_status=\cs --processes=\cp
@@ -79,8 +87,12 @@
       end
     '';
 
-    # Plugins via fisher
+    # Plugins
     plugins = [
+      {
+        name = "bobthefish";
+        src = pkgs.fishPlugins.bobthefish.src;
+      }
       {
         name = "fzf.fish";
         src = pkgs.fishPlugins.fzf-fish.src;
@@ -90,44 +102,6 @@
         src = pkgs.fishPlugins.done.src;
       }
     ];
-  };
-
-  # Starship prompt
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    settings = {
-      add_newline = true;
-      character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[✗](bold red)";
-      };
-      directory = {
-        truncation_length = 3;
-        truncate_to_repo = true;
-      };
-      git_branch = {
-        symbol = " ";
-      };
-      git_status = {
-        ahead = "⇡\${count}";
-        behind = "⇣\${count}";
-        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-      };
-      python = {
-        symbol = " ";
-      };
-      nodejs = {
-        symbol = " ";
-      };
-      rust = {
-        symbol = " ";
-      };
-      nix_shell = {
-        symbol = " ";
-        format = "via [$symbol$state]($style) ";
-      };
-    };
   };
 
   # FZF

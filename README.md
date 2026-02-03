@@ -84,11 +84,10 @@ Download from https://ghostty.org/download or:
 brew install --cask ghostty
 ```
 
-### Step 10: Install LazyVim (Neovim)
+### Step 10: Initialize Neovim
 
+LazyVim config is installed automatically via `apply`. Just run neovim to install plugins:
 ```bash
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
 nvim  # Wait for plugins to install, then :q
 ```
 
@@ -111,7 +110,7 @@ npm install -g @anthropic-ai/claude-code
 | Apply config | `apply` | 2-5 min |
 | Fish shell | `chsh -s $(which fish)` | 10 sec |
 | Ghostty | Download/brew | 1 min |
-| LazyVim | `git clone ...` | 1 min |
+| Neovim | `nvim` (plugins auto-install) | 1 min |
 
 **Total: ~20-30 minutes**
 
@@ -136,10 +135,12 @@ apply             # Apply configuration
 ├── .envrc                 # direnv configuration
 │
 ├── modules/               # Modular configurations
-│   ├── shell/fish.nix     # Fish shell + starship prompt
+│   ├── shell/fish.nix     # Fish shell + bobthefish prompt
 │   ├── terminal/ghostty.nix  # Ghostty terminal
-│   ├── git/default.nix    # Git configuration
-│   └── editor/nvim/       # Neovim (LazyVim starter)
+│   └── git/default.nix    # Git configuration
+│
+├── config/                # Application configs (symlinked via home-manager)
+│   └── nvim/              # Neovim (LazyVim)
 │
 ├── hosts/                 # Machine-specific configs
 │   └── macbook/           # macOS configuration
@@ -151,6 +152,37 @@ apply             # Apply configuration
 │   └── CLAUDE.md          # AI assistant instructions
 │
 └── AGENTS.md              # AI coding guidelines
+```
+
+## Adding New Dotfiles
+
+To add a new config that gets symlinked automatically via `apply`:
+
+**1. For files in `~/.config/`** (XDG config directory):
+```nix
+# In home.nix
+xdg.configFile."app/config.toml" = {
+  source = ./config/app/config.toml;
+  # Use recursive = true for directories
+};
+```
+
+**2. For files in `~/`** (home directory):
+```nix
+# In home.nix
+home.file = {
+  ".somerc".source = ./.somerc;
+  ".config-dir" = {
+    source = ./config-dir;
+    recursive = true;
+  };
+};
+```
+
+**3. Add to git and apply:**
+```bash
+git add <new-files>
+apply
 ```
 
 ## Workflow: Claude Code + Neovim + Ghostty
@@ -186,7 +218,7 @@ This setup is optimized for the [Claude Code + Neovim workflow](https://danielmi
 
 ## Neovim
 
-Uses [LazyVim starter](https://github.com/LazyVim/starter). See [modules/editor/nvim/README.md](modules/editor/nvim/README.md) for setup.
+Uses [LazyVim starter](https://github.com/LazyVim/starter). Config is in `config/nvim/` and symlinked via home-manager.
 
 ## Configurations
 

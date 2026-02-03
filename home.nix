@@ -21,6 +21,21 @@
     ./modules/terminal/ghostty.nix
   ];
 
+  # Symlink dotfiles
+  home.file = {
+    ".claude" = {
+      source = ./.claude;
+      recursive = true;
+    };
+    ".bash_aliases".source = ./.bash_aliases;
+  };
+
+  # Neovim config (LazyVim)
+  xdg.configFile."nvim" = {
+    source = ./config/nvim;
+    recursive = true;
+  };
+
   # Core packages available everywhere
   home.packages = with pkgs; [
     # CLI essentials
