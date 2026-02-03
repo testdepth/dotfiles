@@ -2,37 +2,116 @@
 
 Reproducible dotfiles using **Nix**, **devenv**, and **home-manager**.
 
-## Quick Start
+## New Machine Setup (Complete Guide)
 
-### New Machine Setup
+### Step 1: Install Xcode Command Line Tools
 
 ```bash
-# Install Nix (Determinate Systems installer)
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh
+xcode-select --install
+```
+Click "Install" in the dialog. Wait ~5-10 minutes.
 
-# Clone this repo
+### Step 2: Generate SSH Key & Add to GitHub
+
+```bash
+# Generate SSH key
+ssh-keygen -t ed25519 -C "testdepth@users.noreply.github.com"
+
+# Start ssh-agent and add key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key to clipboard
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+Add key at https://github.com/settings/keys, then verify:
+```bash
+ssh -T git@github.com
+```
+
+### Step 3: Install Nix
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh
+```
+**Restart terminal** after installation.
+
+### Step 4: Install direnv
+
+```bash
+nix profile install nixpkgs#direnv
+```
+
+### Step 5: Clone & Setup Dotfiles
+
+```bash
 git clone git@github.com:testdepth/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-
-# Allow direnv
 direnv allow
-
-# Apply configuration
-home-manager switch --flake .#macbook
 ```
+Wait for devenv to build (~2-5 min first time).
 
-Or run the bootstrap script:
+### Step 6: Apply Configuration
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/testdepth/dotfiles/main/scripts/bootstrap.sh | bash
+apply
+```
+Or: `nix run home-manager -- switch --flake .#macbook`
+
+### Step 7: Set Fish as Default Shell
+
+```bash
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
+```
+**Restart terminal** to use fish.
+
+### Step 8: Install Ghostty
+
+Download from https://ghostty.org/download or:
+```bash
+brew install --cask ghostty
 ```
 
-### Existing Machine Update
+### Step 9: Install LazyVim (Neovim)
+
+```bash
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+nvim  # Wait for plugins to install, then :q
+```
+
+### Step 10: Install Claude Code (Optional)
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### Quick Reference
+
+| Step | Command | Time |
+|------|---------|------|
+| Xcode tools | `xcode-select --install` | 5-10 min |
+| SSH key | `ssh-keygen -t ed25519` | 1 min |
+| Nix | `curl ... \| sh` | 2-3 min |
+| direnv | `nix profile install nixpkgs#direnv` | 30 sec |
+| Clone & setup | `git clone ... && direnv allow` | 2-5 min |
+| Apply config | `apply` | 2-5 min |
+| Fish shell | `chsh -s $(which fish)` | 10 sec |
+| Ghostty | Download/brew | 1 min |
+| LazyVim | `git clone ...` | 1 min |
+
+**Total: ~20-30 minutes**
+
+---
+
+## Existing Machine Update
 
 ```bash
 cd ~/.dotfiles
 nix flake update  # Update dependencies
-home-manager switch --flake .#macbook
+apply             # Apply configuration
 ```
 
 ## Structure
