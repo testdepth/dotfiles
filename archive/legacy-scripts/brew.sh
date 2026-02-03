@@ -100,7 +100,7 @@ brew install wget
 
 brew install --cask postman
 brew install terraform
-brew install --cask anaconda
+# Removed: brew install --cask anaconda (use pyenv + uv instead)
 brew install --cask keepingyouawake
 brew install --cask flux
 brew install --cask slack

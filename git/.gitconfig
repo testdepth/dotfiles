@@ -1,8 +1,8 @@
 [user]
-	name = Nehil Jain
-	email = 2761999+nehiljain@users.noreply.github.com 
+	name = Mark Atkins
+	email = testdepth@users.noreply.github.com
 [core]
-	excludesfile = /Users/nehiljain/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = code --wait
 [diff]
     tool = default-difftool
@@ -51,4 +51,4 @@
 	}; f"
 	pull = pull --ff-only
 [commit]
-	template = /Users/nehiljain/.stCommitMsg
+	template = ~/.stCommitMsg

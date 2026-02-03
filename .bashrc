@@ -123,3 +123,6 @@ if ! shopt -oq posix; then
 fi
 
 . "$HOME/.cargo/env"
+
+# The next line updates PATH for egcli command.
+if [ -f '/Users/matkins1/Library/Group Containers/FELUD555VC.group.com.egnyte.DesktopApp/CLI/egcli.inc' ]; then . '/Users/matkins1/Library/Group Containers/FELUD555VC.group.com.egnyte.DesktopApp/CLI/egcli.inc'; fi

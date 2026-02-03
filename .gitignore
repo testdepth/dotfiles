@@ -1,5 +1,6 @@
 # Compiled Python files
 *.pyc
+__pycache__/
 
 # Folder view configuration files
 .DS_Store
@@ -12,3 +13,23 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# Nix
+.devenv/
+.direnv/
+result
+result-*
+
+# Secrets (never commit)
+.secrets
+*.token
+*.key
+*.pem
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Local machine overrides
+.local.nix

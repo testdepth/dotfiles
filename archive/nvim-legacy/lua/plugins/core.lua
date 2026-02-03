@@ -28,17 +28,6 @@ return {
     end,
   },
 
-  -- add conda nvim
-  --{ "cjrh/vim-conda", build = 'CondaChangeEnv' },
-  --{ "kkoomen/vim-doge", run = ':call doge#install()',
-      --init = function()
-        --require("lazyvim.util").on_attach(function(_, buffer)
-          -- stylua: ignore
-          --vim.keymap.set( "n", "<leader>cd", "DogeGenerateNumpy", { buffer = buffer, desc = "Generate Numpy Docstring" } )
-        --end)
-      --end,
-  --},
-
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
@@ -77,28 +66,7 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
       },
-      extensions = {
-        conda = {anaconda_path = "/opt/miniconda3/"}
-      },
     },
-  },
-
-  --telescope conda setup
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { { "IllustratedMan-code/telescope-conda.nvim", build = "make" } },
-    config = function(_, opts)
-      local telescope = require("telescope")
-      telescope.setup(opts)
-      telescope.load_extension("conda")
-    end,
-    keys = {
-      {
-        "<leader>fc",
-        function() require("telescope").extensions.conda.conda{}  end,
-        desc = "Find Conda Env",
-      }
-    }
   },
 
   -- add telescope-fzf-native

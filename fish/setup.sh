@@ -24,26 +24,32 @@ done
 clear_broken_symlinks "$DESTINATION"
 
 set_fish_shell() {
+        # Detect fish binary location (Homebrew on Apple Silicon vs Intel)
+        FISH_BIN=$(which fish 2>/dev/null || echo "/opt/homebrew/bin/fish")
+        if [ ! -x "$FISH_BIN" ]; then
+            FISH_BIN="/usr/local/bin/fish"
+        fi
+        
         substep_info "Adding fish executable to /etc/shells"
-        if grep --fixed-strings --line-regexp --quiet "/usr/local/bin/fish" /etc/shells; then
+        if grep --fixed-strings --line-regexp --quiet "$FISH_BIN" /etc/shells; then
             substep_success "Fish executable already exists in /etc/shells."
         else
-            if sudo bash -c "echo /usr/local/bin/fish >> /etc/shells"; then
+            if sudo bash -c "echo $FISH_BIN >> /etc/shells"; then
                 substep_success "Fish executable added to /etc/shells."
             else
                 substep_error "Failed adding Fish executable to /etc/shells."
                 return 1
             fi
         fi
-        substep_info "Changing shell to fish"
-        if sudo chsh -s /opt/homebrew/bin/fish moa37394; then
+        substep_info "Changing shell to fish for $USER"
+        if sudo chsh -s "$FISH_BIN" "$USER"; then
             substep_success "Changed shell to fish"
         else
             substep_error "Failed changing shell to fish"
             return 2
         fi
         substep_info "Running fish initial setup"
-        fish -c "setup"
+        fish -c "setup" 2>/dev/null || true
 }
 
 

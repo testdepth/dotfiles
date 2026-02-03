@@ -21,14 +21,8 @@ fzf_configure_bindings --directory=\cf --git_log=\cl --git_status=\cs --processe
 set -gx EDITOR "nvim"
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 
-# >>> conda initialize >>>
-# Don't start base automatically
-set -Ux CONDA_AUTO_ACTIVATE_BASE false
-# !! Contents within this block are managed by 'conda init' !!
-eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
 
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/moa37394/google-cloud-sdk/path.fish.inc' ]; . '/Users/moa37394/google-cloud-sdk/path.fish.inc'; end
+if [ -f "$HOME/google-cloud-sdk/path.fish.inc" ]; . "$HOME/google-cloud-sdk/path.fish.inc"; end

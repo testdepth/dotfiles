@@ -2,7 +2,7 @@
   "workbench.editorAssociations": {
       "*.ipynb": "jupyter-notebook"
   },
-  "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
   "workbench.colorTheme": "Default High Contrast",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -27,7 +27,7 @@
       "default": "right",
       "jupyter-notebook": "left"
   },
-  "python.defaultInterpreterPath": "C:\\Users\\mark_\\anaconda3\\python.exe",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "autoDocstring.docstringFormat": "numpy",
   "diffEditor.ignoreTrimWhitespace": false,
   "todo-tree.general.tags": [
@@ -41,20 +41,12 @@
   ],
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "jupyter.askForKernelRestart": false,
-  "sourcery.token": "user_fzCsz8skH_D9OgtqGfMvU4_zPbM2D1DJLMkD6Xpa_zjGM4c414yweDsWfrQ",
   "redhat.telemetry.enabled": false,
   "git.autofetch": true,
   "liveshare.allowGuestTaskControl": true,
   "liveshare.publishWorkspaceInfo": true,
   "pythonTestExplorer.testFramework": "pytest",
   "python.testing.pytestEnabled": true,
-  "databricks.connection.default.apiRootUrl": "https://adb-8569799800606718.18.azuredatabricks.net/",
-  "databricks.connection.default.displayName": "non-prod",
-  "databricks.connection.default.localSyncFolder": "C:\\mySyncFolder",
-  "databricks.lastActiveConnection": "non-prod",
-  "databricks.connection.default.personalAccessTokenSecure": {
-      "keyTarSettingName": "non-prod-API-Token"
-  },
   "editor.inlineSuggest.enabled": true,
   "notebook.output.textLineLimit": 200,
   "yaml.schemas": {
