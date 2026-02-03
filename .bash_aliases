@@ -37,5 +37,7 @@ alias vi ='nvim'
 alias vim='nvim'
 
 #rust torch env
-export LIBTORCH=$(brew --cellar pytorch)/$(brew info --json pytorch | jq -r '.[0].installed[0].version')
-export LD_LIBRARY_PATH=$LIBTORCH/lib:$LD_LIBRARY_PATH
+# export LIBTORCH=$(brew --cellar pytorch)/$(brew info --json pytorch | jq -r '.[0].installed[0].version')
+# export LD_LIBRARY_PATH=$LIBTORCH/lib:$LD_LIBRARY_PATH
+#
+export PATH="/Users/matkins1/.local/bin:$PATH"
