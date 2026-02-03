@@ -12,24 +12,24 @@
     fzf
     jq
     yq
-    
+
     # Shell
     fish
     starship
-    
+
     # Editors
     neovim
-    
+
     # Python (via uv)
     python311
     uv
-    
+
     # Node (for LSP servers)
     nodejs_20
-    
+
     # Nix tools
-    nil  # Nix LSP
-    nixfmt-rfc-style
+    nil # Nix LSP
+    nixfmt
   ];
 
   # Environment variables
@@ -42,7 +42,7 @@
     # Apply home-manager config
     apply.exec = ''
       echo "Applying home-manager configuration..."
-      home-manager switch --flake .#macbook
+      nix run home-manager -- switch --flake .#macbook
     '';
 
     # Update flake inputs
@@ -71,8 +71,8 @@
     echo ""
   '';
 
-  # Pre-commit hooks
-  pre-commit.hooks = {
-    nixfmt-rfc-style.enable = true;
+  # Git hooks (pre-commit)
+  git-hooks.hooks = {
+    nixfmt.enable = true;
   };
 }

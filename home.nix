@@ -1,10 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  # User info - will be overridden by host-specific config
-  home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
-  
+  # User info - set defaults, override in host-specific config
+  # Using mkDefault so host configs can override without conflict
+  home.username = lib.mkDefault "matkins1";
+  home.homeDirectory = lib.mkDefault "/Users/matkins1";
+
   # State version - don't change after initial setup
   home.stateVersion = "24.05";
 
@@ -24,21 +30,21 @@
     jq
     yq
     bat
-    eza      # modern ls
-    zoxide   # smart cd
-    
+    eza # modern ls
+    zoxide # smart cd
+
     # Git tools
     gh
     lazygit
-    delta    # git diff pager
-    
+    delta # git diff pager
+
     # Development
     neovim
-    
+
     # Python (uv for package management)
     python311
     uv
-    
+
     # Node (for various tools)
     nodejs_20
   ];
