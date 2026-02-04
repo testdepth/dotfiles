@@ -88,10 +88,12 @@
 
 ```
 ┌──────────────┬──────────────┐
-│              │    Neovim    │
-│  Claude Code ├──────────────┤
-│              │    Shell     │
-└──────────────┴──────────────┘
+│              │              │
+│  Claude Code │    Neovim    │
+│              │              │
+├──────────────┴──────────────┤
+│            Shell            │
+└─────────────────────────────┘
 ```
 
-Setup: Open Ghostty → `Cmd+D` → `Cmd+Shift+D` → Navigate with `Cmd+Option+Arrows`
+Setup: Open Ghostty → `Cmd+Shift+D` (full-width bottom) → `Cmd+Option+↑` → `Cmd+D` (split right)

@@ -117,18 +117,18 @@
     |                  |                  |
     |   Claude Code    |     Neovim       |
     |                  |                  |
-    |                  +------------------+
-    |                  |      Shell       |
     +------------------+------------------+
+    |              Shell                  |
+    +-------------------------------------+
     ```
 
     ## Setup
 
     1. Open Ghostty
-    2. `Cmd+D` to split right (for Neovim)
-    3. `Cmd+Shift+D` to split bottom (for shell)
-    4. Run `claude` in left pane
-    5. Open files with `nvim` in right pane
+    2. `Cmd+Shift+D` to split bottom (full-width shell)
+    3. `Cmd+Option+↑` to move to top pane
+    4. `Cmd+D` to split right (for Neovim)
+    5. Run `claude` in left pane, `nvim` in right pane
 
     ## Navigation (Ghostty panes)
 
