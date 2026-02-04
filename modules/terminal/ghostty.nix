@@ -25,11 +25,11 @@
     # Create new split below (for shell)
     keybind = cmd+shift+t=new_split:down
 
-    # Navigate between panes (vim-style)
-    keybind = ctrl+h=goto_split:left
-    keybind = ctrl+j=goto_split:bottom
-    keybind = ctrl+k=goto_split:top
-    keybind = ctrl+l=goto_split:right
+    # Navigate between panes (Cmd+Option to avoid conflict with Neovim Ctrl+hjkl)
+    keybind = cmd+alt+h=goto_split:left
+    keybind = cmd+alt+j=goto_split:bottom
+    keybind = cmd+alt+k=goto_split:top
+    keybind = cmd+alt+l=goto_split:right
 
     # Close pane
     keybind = cmd+w=close_surface
@@ -130,12 +130,19 @@
     4. Run `claude` in left pane
     5. Open files with `nvim` in right pane
 
-    ## Navigation
+    ## Navigation (Ghostty panes)
 
-    - `Ctrl+H` - Move to left pane
-    - `Ctrl+J` - Move to bottom pane
-    - `Ctrl+K` - Move to top pane
-    - `Ctrl+L` - Move to right pane
+    - `Cmd+Option+H` - Move to left pane
+    - `Cmd+Option+J` - Move to bottom pane
+    - `Cmd+Option+K` - Move to top pane
+    - `Cmd+Option+L` - Move to right pane
+
+    ## Navigation (Neovim splits)
+
+    - `Ctrl+H` - Move to left split
+    - `Ctrl+J` - Move to lower split
+    - `Ctrl+K` - Move to upper split
+    - `Ctrl+L` - Move to right split
 
     ## Pane Management
 

@@ -1,13 +1,13 @@
 # Ghostty + LazyVim Navigation Cheatsheet
 
-## Pane/Window Navigation (Unified Vim-style)
+## Pane/Window Navigation
 
 | Action | Ghostty Panes | Neovim Splits |
 |--------|---------------|---------------|
-| Move left | `Ctrl+H` | `Ctrl+H` |
-| Move down | `Ctrl+J` | `Ctrl+J` |
-| Move up | `Ctrl+K` | `Ctrl+K` |
-| Move right | `Ctrl+L` | `Ctrl+L` |
+| Move left | `Cmd+Option+H` | `Ctrl+H` |
+| Move down | `Cmd+Option+J` | `Ctrl+J` |
+| Move up | `Cmd+Option+K` | `Ctrl+K` |
+| Move right | `Cmd+Option+L` | `Ctrl+L` |
 
 ---
 

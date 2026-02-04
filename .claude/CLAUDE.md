@@ -52,3 +52,33 @@
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
 - **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
 - **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+
+## Nix / direnv
+
+- **`use devenv` vs `use flake`**: The `use devenv` directive requires devenv's own direnv hook. When using nix-direnv, use `use flake . --impure` instead.
+- **Flakes require git tracking**: Nix flakes only see files tracked by git. Always `git add` new `.nix` files before running direnv/flake commands.
+- **devenv needs flake.nix**: When using `use flake` with devenv, create a `flake.nix` that imports devenv:
+  ```nix
+  {
+    inputs = {
+      nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+      devenv.url = "github:cachix/devenv";
+      devenv.inputs.nixpkgs.follows = "nixpkgs";
+    };
+    outputs = { self, nixpkgs, devenv, ... }@inputs:
+      let
+        systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+        forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+      in {
+        devShells = forAllSystems (system:
+          let pkgs = nixpkgs.legacyPackages.${system};
+          in {
+            default = devenv.lib.mkShell {
+              inherit inputs pkgs;
+              modules = [ ./devenv.nix ];
+            };
+          });
+      };
+  }
+  ```
+- **Global gitignore**: User's global gitignore excludes `.envrc`. Use `git add -f .envrc` to force-add when the project needs it committed.

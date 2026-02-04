@@ -27,7 +27,6 @@
       source = ./.claude;
       recursive = true;
     };
-    ".bash_aliases".source = ./.bash_aliases;
   };
 
   # Neovim config (LazyVim)
