@@ -36,8 +36,8 @@
       gs = "git status";
       gd = "git diff";
       gl = "git log --oneline -20";
-      gp = "git push";
-      gpl = "git pull";
+      gp = "git pull";
+      pew = "git push";
       pub = "git push --set-upstream origin";
 
       # Editor
