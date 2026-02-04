@@ -4,10 +4,10 @@
 
 | Action | Ghostty Panes | Neovim Splits |
 |--------|---------------|---------------|
-| Move left | `Cmd+Option+H` | `Ctrl+H` |
-| Move down | `Cmd+Option+J` | `Ctrl+J` |
-| Move up | `Cmd+Option+K` | `Ctrl+K` |
-| Move right | `Cmd+Option+L` | `Ctrl+L` |
+| Move left | `Cmd+Option+←` | `Ctrl+H` |
+| Move down | `Cmd+Option+↓` | `Ctrl+J` |
+| Move up | `Cmd+Option+↑` | `Ctrl+K` |
+| Move right | `Cmd+Option+→` | `Ctrl+L` |
 
 ---
 
@@ -16,7 +16,7 @@
 | Action | Keybinding |
 |--------|------------|
 | Split right | `Cmd+D` |
-| Split below | `Cmd+Shift+T` |
+| Split below | `Cmd+Shift+D` |
 | Close pane | `Cmd+W` |
 | Equalize splits | `Cmd+=` |
 | Resize left/down/up/right | `Cmd+Ctrl+H/J/K/L` |
@@ -94,4 +94,4 @@
 └──────────────┴──────────────┘
 ```
 
-Setup: Open Ghostty → `Cmd+D` → `Cmd+Shift+T` → Navigate with `Ctrl+H/J/K/L`
+Setup: Open Ghostty → `Cmd+D` → `Cmd+Shift+D` → Navigate with `Cmd+Option+Arrows`

@@ -23,13 +23,13 @@
     keybind = cmd+d=new_split:right
 
     # Create new split below (for shell)
-    keybind = cmd+shift+t=new_split:down
+    keybind = cmd+shift+d=new_split:down
 
-    # Navigate between panes (Cmd+Option to avoid conflict with Neovim Ctrl+hjkl)
-    keybind = cmd+alt+h=goto_split:left
-    keybind = cmd+alt+j=goto_split:bottom
-    keybind = cmd+alt+k=goto_split:top
-    keybind = cmd+alt+l=goto_split:right
+    # Navigate between panes (Cmd+Option+Arrows)
+    keybind = cmd+alt+left=goto_split:left
+    keybind = cmd+alt+down=goto_split:bottom
+    keybind = cmd+alt+up=goto_split:top
+    keybind = cmd+alt+right=goto_split:right
 
     # Close pane
     keybind = cmd+w=close_surface
@@ -126,16 +126,16 @@
 
     1. Open Ghostty
     2. `Cmd+D` to split right (for Neovim)
-    3. `Cmd+Shift+T` to split bottom (for shell)
+    3. `Cmd+Shift+D` to split bottom (for shell)
     4. Run `claude` in left pane
     5. Open files with `nvim` in right pane
 
     ## Navigation (Ghostty panes)
 
-    - `Cmd+Option+H` - Move to left pane
-    - `Cmd+Option+J` - Move to bottom pane
-    - `Cmd+Option+K` - Move to top pane
-    - `Cmd+Option+L` - Move to right pane
+    - `Cmd+Option+←` - Move to left pane
+    - `Cmd+Option+↓` - Move to bottom pane
+    - `Cmd+Option+↑` - Move to top pane
+    - `Cmd+Option+→` - Move to right pane
 
     ## Navigation (Neovim splits)
 
@@ -147,7 +147,7 @@
     ## Pane Management
 
     - `Cmd+D` - Split right
-    - `Cmd+Shift+T` - Split down
+    - `Cmd+Shift+D` - Split down
     - `Cmd+W` - Close pane
     - `Cmd+=` - Equalize panes
 
