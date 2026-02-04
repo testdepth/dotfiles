@@ -33,6 +33,7 @@
   xdg.configFile."nvim" = {
     source = ./config/nvim;
     recursive = true;
+    force = true;
   };
 
   # Core packages available everywhere
