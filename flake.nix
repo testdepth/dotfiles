@@ -87,6 +87,15 @@
             ];
             extraSpecialArgs = { inherit inputs; };
           };
+          # openclaw service user - macOS Apple Silicon
+          "openclaw" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            modules = [
+              ./home.nix
+              ./hosts/geraldbot
+            ];
+            extraSpecialArgs = { inherit inputs; };
+          };
 
           # macOS Intel
           "macbook-intel" = home-manager.lib.homeManagerConfiguration {
