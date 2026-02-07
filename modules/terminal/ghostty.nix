@@ -63,7 +63,7 @@
     window-padding-x = 8
     window-padding-y = 8
     window-decoration = true
-    macos-titlebar-style = hidden
+    macos-titlebar-style = tabs
 
     # =============================================================================
     # SHELL
