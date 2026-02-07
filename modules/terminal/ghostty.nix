@@ -48,7 +48,7 @@
     # =============================================================================
 
     # Theme
-    theme = catppuccin-mocha
+    theme = nordfox
 
     # Font
     font-family = JetBrains Mono
@@ -68,9 +68,9 @@
     # =============================================================================
     # SHELL
     # =============================================================================
-
+    # TODO: parametrize hostname
     # Use fish shell (full path needed for macOS GUI apps)
-    command = /Users/shark/.nix-profile/bin/fish
+    command = /Users/gerald/.nix-profile/bin/fish 
 
     # Shell integration
     shell-integration = fish
@@ -94,9 +94,6 @@
     # Links
     link-url = true
 
-    # Bell
-    audible-bell = false
-    visual-bell = false
 
     # =============================================================================
     # PERFORMANCE

@@ -78,6 +78,16 @@
             extraSpecialArgs = { inherit inputs; };
           };
 
+          # gerald - macOS Apple Silicon
+          "gerald" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            modules = [
+              ./home.nix
+              ./hosts/gerald
+            ];
+            extraSpecialArgs = { inherit inputs; };
+          };
+
           # macOS Intel
           "macbook-intel" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.x86_64-darwin;
