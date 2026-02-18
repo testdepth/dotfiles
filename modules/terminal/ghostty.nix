@@ -68,9 +68,8 @@
     # =============================================================================
     # SHELL
     # =============================================================================
-    # TODO: parametrize hostname
     # Use fish shell (full path needed for macOS GUI apps)
-    command = /Users/gerald/.nix-profile/bin/fish 
+    command = ${config.home.homeDirectory}/.nix-profile/bin/fish
 
     # Shell integration
     shell-integration = fish
