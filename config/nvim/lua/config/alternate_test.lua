@@ -70,7 +70,15 @@ local function impl_to_test(path)
   local lists = {}
   if not in_tests then
     table.insert(lists, co_located_candidates(dir, stem))
-    table.insert(lists, co_located_candidates(dir .. "/__tests__", stem))
+    local d = dir
+    for _ = 1, 32 do
+      table.insert(lists, co_located_candidates(d .. "/__tests__", stem))
+      local parent = vim.fn.fnamemodify(d, ":h")
+      if parent == d then
+        break
+      end
+      d = parent
+    end
   else
     table.insert(lists, co_located_candidates(dir, stem))
   end
@@ -78,6 +86,51 @@ local function impl_to_test(path)
     local found = first_existing(list)
     if found then
       return found
+    end
+  end
+  return nil
+end
+
+local function is_ignored_impl_path(p)
+  return p:match("node_modules")
+    or p:match("/%.git/")
+    or p:match("/dist/")
+    or p:match("/build/")
+end
+
+local function path_depth(p)
+  local _, n = p:gsub("/", "/")
+  return n
+end
+
+local function find_impl_under(parent, stem)
+  parent = vim.fn.fnamemodify(parent, ":p")
+  for _, ext in ipairs(SOURCE_EXTS) do
+    local direct = string.format("%s/%s.%s", parent, stem, ext)
+    if exists(direct) then
+      return direct
+    end
+  end
+  for _, ext in ipairs(SOURCE_EXTS) do
+    local pat = string.format("**/%s.%s", stem, ext)
+    local g = vim.fn.globpath(parent, pat, false, true)
+    local matches = type(g) == "string" and (g ~= "" and { g } or {}) or g
+    local candidates = {}
+    for _, p in ipairs(matches) do
+      p = vim.fn.fnamemodify(p, ":p")
+      if not is_ignored_impl_path(p) then
+        table.insert(candidates, p)
+      end
+    end
+    table.sort(candidates, function(a, b)
+      local da, db = path_depth(a), path_depth(b)
+      if da ~= db then
+        return da < db
+      end
+      return a < b
+    end)
+    if #candidates > 0 then
+      return candidates[1]
     end
   end
   return nil
@@ -96,13 +149,7 @@ local function test_to_impl(path)
   else
     parent = dir
   end
-  for _, ext in ipairs(SOURCE_EXTS) do
-    local p = string.format("%s/%s.%s", parent, stem, ext)
-    if exists(p) then
-      return p
-    end
-  end
-  return nil
+  return find_impl_under(parent, stem)
 end
 
 local function resolve(path)
