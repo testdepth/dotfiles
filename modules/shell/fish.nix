@@ -61,8 +61,11 @@
       set -gx EDITOR nvim
       set -gx VISUAL nvim
 
-      # Colors
-      set -gx TERM xterm-256color
+      # Colors (do not clobber TERM: Ghostty and other emulators set the right terminfo;
+      # forcing xterm-256color breaks Neovim/cmdline and other full-screen TUIs.)
+      if test -z "$TERM" || test "$TERM" = dumb
+        set -gx TERM xterm-256color
+      end
       set -gx LS_COLORS "di=38;5;27:fi=38;5;7:ln=38;5;51:ex=38;5;9:"
 
       # Disable fish greeting
