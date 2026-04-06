@@ -1,7 +1,5 @@
 return {
   { "saghen/blink.cmp", enabled = false, optional = true },
-  { import = "lazyvim.plugins.extras.lang.typescript" },
-  { import = "lazyvim.plugins.extras.test.core" },
   { "folke/noice.nvim", enabled = false },
   {
     "folke/snacks.nvim",
