@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(git -C /Users/shark/code/dotfiles status)",
-      "Bash(nvim:*)"
+      "Bash(nvim:*)",
+      "Bash(git -C ~/code/dotfiles add .claude/)",
+      "Bash(git -C ~/code/dotfiles status --short)",
+      "Bash(git -C ~/code/dotfiles diff .claude/settings.local.json)",
+      "Bash(git -C ~/code/dotfiles diff --cached)"
     ]
   }
 }

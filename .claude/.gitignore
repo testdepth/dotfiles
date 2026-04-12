@@ -1,0 +1,19 @@
+# Runtime data - don't track
+.claude.json
+projects/
+plugins/
+history.jsonl
+stats-cache.json
+mcp-needs-auth-cache.json
+backups/
+cache/
+debug/
+downloads/
+file-history/
+paste-cache/
+plans/
+session-env/
+shell-snapshots/
+telemetry/
+todos/
+sessions/
