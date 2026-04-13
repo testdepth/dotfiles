@@ -49,20 +49,6 @@ fi
 echo ""
 
 # =============================================================================
-# Install direnv
-# =============================================================================
-
-if ! command -v direnv &> /dev/null; then
-    echo "Installing direnv..."
-    nix profile install nixpkgs#direnv
-    echo "direnv installed successfully!"
-else
-    echo "direnv is already installed."
-fi
-
-echo ""
-
-# =============================================================================
 # Clone dotfiles (if not already in repo)
 # =============================================================================
 
@@ -77,15 +63,6 @@ else
 fi
 
 cd "$DOTFILES_DIR"
-
-echo ""
-
-# =============================================================================
-# Setup direnv
-# =============================================================================
-
-echo "Setting up direnv..."
-direnv allow
 
 echo ""
 
@@ -115,6 +92,14 @@ echo "This may take a few minutes on first run..."
 echo ""
 
 nix run home-manager -- switch --flake ".#$HM_CONFIG"
+
+echo ""
+echo "Setting up direnv for this repo..."
+if command -v direnv &> /dev/null; then
+    direnv allow
+else
+    echo "Warning: direnv not on PATH yet; open a new shell and run: cd $DOTFILES_DIR && direnv allow"
+fi
 
 echo ""
 echo "======================================"

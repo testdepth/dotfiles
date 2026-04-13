@@ -5,6 +5,11 @@
   ...
 }:
 
+let
+  apply-nvim = pkgs.writeShellScriptBin "apply-nvim" (
+    lib.removePrefix "#!/usr/bin/env bash\n" (builtins.readFile ./scripts/apply-nvim.sh)
+  );
+in
 {
   # User info - set defaults, override in host-specific config
   # Using mkDefault so host configs can override without conflict
@@ -38,6 +43,8 @@
 
   # Core packages available everywhere
   home.packages = with pkgs; [
+    apply-nvim
+
     # CLI essentials
     ripgrep
     fd

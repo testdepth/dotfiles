@@ -46,6 +46,10 @@
       nix run home-manager -- switch --flake ".#$HOST"
     '';
 
+    apply-nvim.exec = ''
+      bash ${./scripts/apply-nvim.sh} "$@"
+    '';
+
     # Update flake inputs
     update.exec = ''
       echo "Updating flake inputs..."
@@ -66,8 +70,9 @@
     echo "  ================================="
     echo ""
     echo "  Commands:"
-    echo "    apply   - Apply home-manager configuration"
-    echo "    update  - Update flake inputs"
+    echo "    apply       - Apply full home-manager configuration"
+    echo "    apply-nvim  - Same switch (use after editing config/nvim; HM has no partial apply)"
+    echo "    update      - Update flake inputs"
     echo "    fmt     - Format Nix files"
     echo ""
   '';

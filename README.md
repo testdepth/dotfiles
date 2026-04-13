@@ -47,29 +47,32 @@ mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 ```
 
-### Step 5: Install direnv
-
-```bash
-nix profile install nixpkgs#direnv
-```
-
-### Step 6: Clone & Setup Dotfiles
+### Step 5: Clone dotfiles
 
 ```bash
 git clone git@github.com:testdepth/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-direnv allow
 ```
-Wait for devenv to build (~2-5 min first time).
 
-### Step 7: Apply Configuration
+### Step 6: Apply configuration (installs direnv)
+
+Home Manager installs `direnv`, `nix-direnv`, and the Fish hook (`programs.direnv` in `modules/shell/fish.nix`). Do not also install direnv with `nix profile install`; remove any existing profile copy first: `nix profile remove direnv`.
 
 ```bash
 apply
 ```
+
 Or: `nix run home-manager -- switch --flake .#macbook`
 
-### Step 8: Set Fish as Default Shell
+Then trust this repo’s `.envrc`:
+
+```bash
+direnv allow
+```
+
+Wait for devenv to build (~2–5 min first time).
+
+### Step 7: Set Fish as Default Shell
 
 ```bash
 echo $(which fish) | sudo tee -a /etc/shells
@@ -77,21 +80,21 @@ chsh -s $(which fish)
 ```
 **Restart terminal** to use fish.
 
-### Step 9: Install Ghostty
+### Step 8: Install Ghostty
 
 Download from https://ghostty.org/download or:
 ```bash
 brew install --cask ghostty
 ```
 
-### Step 10: Initialize Neovim
+### Step 9: Initialize Neovim
 
 LazyVim config is installed automatically via `apply`. Just run neovim to install plugins:
 ```bash
 nvim  # Wait for plugins to install, then :q
 ```
 
-### Step 11: Install Claude Code (Optional)
+### Step 10: Install Claude Code (Optional)
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -105,9 +108,8 @@ npm install -g @anthropic-ai/claude-code
 | SSH key | `ssh-keygen -t ed25519` | 1 min |
 | Nix | `curl ... \| sh` | 2-3 min |
 | Enable flakes | `echo ... > ~/.config/nix/nix.conf` | 10 sec |
-| direnv | `nix profile install nixpkgs#direnv` | 30 sec |
-| Clone & setup | `git clone ... && direnv allow` | 2-5 min |
-| Apply config | `apply` | 2-5 min |
+| Clone | `git clone ... ~/.dotfiles` | 1 min |
+| Apply + direnv | `apply` then `direnv allow` | 2-5 min |
 | Fish shell | `chsh -s $(which fish)` | 10 sec |
 | Ghostty | Download/brew | 1 min |
 | Neovim | `nvim` (plugins auto-install) | 1 min |
@@ -120,9 +122,12 @@ npm install -g @anthropic-ai/claude-code
 
 ```bash
 cd ~/.dotfiles
-nix flake update  # Update dependencies
-apply             # Apply configuration
+nix flake update   # Update dependencies
+apply              # Full home-manager switch
+apply-nvim         # Same as apply (shorthand when you only changed config/nvim/)
 ```
+
+`apply-nvim` is on your PATH after a successful `apply`. Home Manager cannot activate only Neovim; both commands run a full profile switch.
 
 ## Structure
 
