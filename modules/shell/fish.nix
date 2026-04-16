@@ -103,7 +103,7 @@
       end
       # Cursor CLU
       if test -d $HOME/.local/bin
-        fish_add_path $HOME/.local/bin
+        fish_add_path --prepend $HOME/.local/bin
       end
 
     '';

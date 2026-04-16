@@ -6,7 +6,10 @@
       "Bash(git -C ~/code/dotfiles add .claude/)",
       "Bash(git -C ~/code/dotfiles status --short)",
       "Bash(git -C ~/code/dotfiles diff .claude/settings.local.json)",
-      "Bash(git -C ~/code/dotfiles diff --cached)"
+      "Bash(git -C ~/code/dotfiles diff --cached)",
+      "Bash(echo $fish_user_paths)",
+      "Read(//nix/store/**)",
+      "Bash(nix show-derivation:*)"
     ]
   }
 }
