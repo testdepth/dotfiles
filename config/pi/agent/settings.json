@@ -6,6 +6,7 @@
   "skills": [
     "~/.claude/skills",
     "~/.codex/skills",
-    "~/.cursor/skills"
+    "~/.cursor/skills",
+    "~/.cursor/skills-cursor"
   ]
 }
