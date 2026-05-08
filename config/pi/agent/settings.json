@@ -1,0 +1,11 @@
+{
+  "defaultProvider": "openai-codex",
+  "defaultThinkingLevel": "high",
+  "collapseChangelog": true,
+  "enableInstallTelemetry": false,
+  "skills": [
+    "~/.claude/skills",
+    "~/.codex/skills",
+    "~/.cursor/skills"
+  ]
+}

@@ -24,43 +24,8 @@ in
     ./modules/shell/fish.nix
     ./modules/git
     ./modules/terminal/ghostty.nix
+    ./modules/cli
   ];
-
-  # Symlink dotfiles - link static dirs individually so settings.json stays mutable
-  home.file = {
-    ".claude/CLAUDE.md".source = ./.claude/CLAUDE.md;
-    ".claude/.gitignore".source = ./.claude/.gitignore;
-    ".claude/skills" = {
-      source = ./.claude/skills;
-      recursive = true;
-    };
-    ".claude/commands" = {
-      source = ./.claude/commands;
-      recursive = true;
-    };
-    ".claude/rules" = {
-      source = ./.claude/rules;
-      recursive = true;
-    };
-    ".claude/agents" = {
-      source = ./.claude/agents;
-      recursive = true;
-    };
-    ".claude/output-styles" = {
-      source = ./.claude/output-styles;
-      recursive = true;
-    };
-  };
-
-  # Bootstrap settings.json as a mutable file (not a symlink) so Claude Code can modify it
-  home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    settings_file="$HOME/.claude/settings.json"
-    if [ -L "$settings_file" ] || [ ! -f "$settings_file" ]; then
-      $DRY_RUN_CMD rm -f "$settings_file"
-      $DRY_RUN_CMD cp ${./.claude/settings.json} "$settings_file"
-      $DRY_RUN_CMD chmod 644 "$settings_file"
-    fi
-  '';
 
   # Neovim config (LazyVim)
   xdg.configFile."nvim" = {
@@ -98,6 +63,9 @@ in
     # Node (for various tools)
     nodejs_20
   ];
+
+  modules.cli.claude.enable = true;
+  modules.cli.pi.enable = true;
 
   # Let home-manager manage itself
   programs.home-manager.enable = true;
