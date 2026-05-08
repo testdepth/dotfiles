@@ -26,13 +26,40 @@ in
     ./modules/terminal/ghostty.nix
   ];
 
-  # Symlink dotfiles
+  # Symlink dotfiles - link static dirs individually so settings.json stays mutable
   home.file = {
-    ".claude" = {
-      source = ./.claude;
+    ".claude/CLAUDE.md".source = ./.claude/CLAUDE.md;
+    ".claude/.gitignore".source = ./.claude/.gitignore;
+    ".claude/skills" = {
+      source = ./.claude/skills;
+      recursive = true;
+    };
+    ".claude/commands" = {
+      source = ./.claude/commands;
+      recursive = true;
+    };
+    ".claude/rules" = {
+      source = ./.claude/rules;
+      recursive = true;
+    };
+    ".claude/agents" = {
+      source = ./.claude/agents;
+      recursive = true;
+    };
+    ".claude/output-styles" = {
+      source = ./.claude/output-styles;
       recursive = true;
     };
   };
+
+  # Bootstrap settings.json as a mutable file (not a symlink) so Claude Code can modify it
+  home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    settings_file="$HOME/.claude/settings.json"
+    if [ -L "$settings_file" ] || [ ! -f "$settings_file" ]; then
+      $DRY_RUN_CMD cp ${./.claude/settings.json} "$settings_file"
+      $DRY_RUN_CMD chmod 644 "$settings_file"
+    fi
+  '';
 
   # Neovim config (LazyVim)
   xdg.configFile."nvim" = {

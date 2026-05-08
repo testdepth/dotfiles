@@ -106,6 +106,11 @@
         fish_add_path --prepend $HOME/.local/bin
       end
 
+      # Fiberplane
+      if test -d $HOME/.fiberplane/bin
+        fish_add_path $HOME/.fiberplane/bin
+      end
+
     '';
 
     # Plugins
