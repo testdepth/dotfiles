@@ -92,6 +92,12 @@
         fzf_configure_bindings --directory=\cf --git_log=\cl --git_status=\cs --processes=\cp
       end
 
+      # npm global prefix (avoids installing into read-only Nix store)
+      set -gx NPM_CONFIG_PREFIX $HOME/.npm-global
+      if test -d $HOME/.npm-global/bin
+        fish_add_path $HOME/.npm-global/bin
+      end
+
       # Cargo/Rust
       if test -d $HOME/.cargo/bin
         fish_add_path $HOME/.cargo/bin

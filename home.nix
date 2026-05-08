@@ -56,6 +56,7 @@ in
   home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     settings_file="$HOME/.claude/settings.json"
     if [ -L "$settings_file" ] || [ ! -f "$settings_file" ]; then
+      $DRY_RUN_CMD rm -f "$settings_file"
       $DRY_RUN_CMD cp ${./.claude/settings.json} "$settings_file"
       $DRY_RUN_CMD chmod 644 "$settings_file"
     fi
