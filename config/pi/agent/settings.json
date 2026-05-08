@@ -3,6 +3,9 @@
   "defaultThinkingLevel": "high",
   "collapseChangelog": true,
   "enableInstallTelemetry": false,
+  "packages": [
+    "npm:pi-mcp-adapter"
+  ],
   "skills": [
     "~/.claude/skills",
     "~/.codex/skills",
