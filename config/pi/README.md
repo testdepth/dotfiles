@@ -39,3 +39,11 @@ Use after local `.pi/` changes are validated to selectively promote them into gl
 - Keep project changes in-repo under `.pi/` for reproducibility.
 - Promote globally only after explicit confirmation.
 - If global Pi is dotfiles-managed, update dotfiles sources and run your normal apply flow.
+
+## Included global extensions
+
+- `config/pi/agent/extensions/paste-clipboard-image.ts`
+  - Adds `/paste-image [optional message]` in Pi.
+  - Binds `Ctrl+V` to paste a clipboard image directly.
+  - Pulls an image from the macOS clipboard and sends it as an attached user image.
+  - Uses `pngpaste` when available, with AppleScript fallback.

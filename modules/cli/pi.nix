@@ -46,6 +46,10 @@ in
         source = ../../config/pi/agent/skills;
         recursive = true;
       };
+      ".pi/agent/extensions" = {
+        source = ../../config/pi/agent/extensions;
+        recursive = true;
+      };
     };
 
     home.activation.piSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
