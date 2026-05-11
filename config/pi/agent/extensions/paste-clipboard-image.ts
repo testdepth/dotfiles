@@ -115,10 +115,4 @@ export default function (pi: ExtensionAPI) {
 		},
 	});
 
-	pi.registerShortcut("ctrl+v", {
-		description: "Paste clipboard image",
-		handler: async (ctx) => {
-			await pasteClipboardImage(ctx, "");
-		},
-	});
 }
