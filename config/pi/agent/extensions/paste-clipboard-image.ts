@@ -80,7 +80,7 @@ export default function (pi: ExtensionAPI) {
 		const inputText = args.trim() || editorText;
 		const content: Array<
 			| { type: "text"; text: string }
-			| { type: "image"; source: { type: "base64"; mediaType: "image/png"; data: string } }
+			| { type: "image"; source: { type: "base64"; media_type: "image/png"; data: string } }
 		> = [];
 
 		if (inputText) {
@@ -91,7 +91,7 @@ export default function (pi: ExtensionAPI) {
 			type: "image",
 			source: {
 				type: "base64",
-				mediaType: "image/png",
+				media_type: "image/png",
 				data: imageBase64,
 			},
 		});
