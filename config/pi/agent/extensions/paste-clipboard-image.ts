@@ -94,7 +94,7 @@ async function readClipboardImageBase64(pi: ExtensionAPI): Promise<string | null
 }
 
 export default function (pi: ExtensionAPI) {
-	pi.on("input", async (event, ctx) => {
+	pi.on("input", async (event) => {
 		if (event.source === "extension") return { action: "continue" as const };
 
 		const pastedPath = extractTransientClipboardImagePath(event.text);
@@ -105,32 +105,15 @@ export default function (pi: ExtensionAPI) {
 			return {
 				action: "transform" as const,
 				text: PASTED_IMAGE_PLACEHOLDER,
+				images: event.images,
 			};
 		}
 
-		const content: Array<
-			| { type: "text"; text: string }
-			| { type: "image"; source: { type: "base64"; media_type: "image/png"; data: string } }
-		> = [
-			{ type: "text", text: PASTED_IMAGE_PLACEHOLDER },
-			{
-				type: "image",
-				source: {
-					type: "base64",
-					media_type: "image/png",
-					data: imageBase64,
-				},
-			},
-		];
-
-		if (!ctx.isIdle()) {
-			pi.sendUserMessage(content, { deliverAs: "followUp" });
-			ctx.ui.notify("Clipboard image queued as follow-up message.", "info");
-			return { action: "handled" as const };
-		}
-
-		pi.sendUserMessage(content);
-		return { action: "handled" as const };
+		return {
+			action: "transform" as const,
+			text: PASTED_IMAGE_PLACEHOLDER,
+			images: [{ type: "image", data: imageBase64, mimeType: "image/png" }],
+		};
 	});
 
 	const pasteClipboardImage = async (
@@ -156,21 +139,14 @@ export default function (pi: ExtensionAPI) {
 		const inputText = normalizeInputText(args) || normalizeInputText(editorText);
 		const content: Array<
 			| { type: "text"; text: string }
-			| { type: "image"; source: { type: "base64"; media_type: "image/png"; data: string } }
+			| { type: "image"; data: string; mimeType: string }
 		> = [];
 
 		if (inputText) {
 			content.push({ type: "text", text: inputText });
 		}
 
-		content.push({
-			type: "image",
-			source: {
-				type: "base64",
-				media_type: "image/png",
-				data: imageBase64,
-			},
-		});
+		content.push({ type: "image", data: imageBase64, mimeType: "image/png" });
 
 		if (!ctx.isIdle()) {
 			pi.sendUserMessage(content, { deliverAs: "followUp" });
@@ -190,5 +166,4 @@ export default function (pi: ExtensionAPI) {
 			await pasteClipboardImage(ctx, args);
 		},
 	});
-
 }
