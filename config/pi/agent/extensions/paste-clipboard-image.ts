@@ -4,6 +4,43 @@ import { join } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const CLIP_DIR = join(tmpdir(), "pi-clipboard-images");
+const PASTED_IMAGE_PLACEHOLDER = "[pasted image]";
+
+function isLikelyTransientClipboardImagePath(value: string): boolean {
+	const normalized = value.trim().replace(/^file:\/\//, "");
+	if (!normalized.startsWith("/")) return false;
+	if (!/\.(png|jpe?g|gif|webp)$/i.test(normalized)) return false;
+
+	return (
+		/\/var\/folders\/.+\/T\/pi-clipboard-[\w-]+\.(png|jpe?g|gif|webp)$/i.test(normalized) ||
+		/\/var\/folders\/.+\/T\/pi-clipboard-images\/clipboard-\d+\.png$/i.test(normalized)
+	);
+}
+
+function normalizeInputText(value: string): string {
+	const text = value.trim();
+	if (!text) return "";
+	if (isLikelyTransientClipboardImagePath(text)) return PASTED_IMAGE_PLACEHOLDER;
+	return text;
+}
+
+function extractTransientClipboardImagePath(value: string): string | null {
+	const text = value.trim();
+	if (!text) return null;
+	const normalized = text.replace(/^file:\/\//, "");
+	if (!isLikelyTransientClipboardImagePath(normalized)) return null;
+	return normalized;
+}
+
+async function readImageFileBase64(path: string): Promise<string | null> {
+	try {
+		const buf = await readFile(path);
+		if (buf.length === 0) return null;
+		return buf.toString("base64");
+	} catch {
+		return null;
+	}
+}
 
 async function hasPngpaste(pi: ExtensionAPI): Promise<boolean> {
 	const result = await pi.exec("bash", ["-lc", "command -v pngpaste >/dev/null 2>&1"], {
@@ -57,6 +94,45 @@ async function readClipboardImageBase64(pi: ExtensionAPI): Promise<string | null
 }
 
 export default function (pi: ExtensionAPI) {
+	pi.on("input", async (event, ctx) => {
+		if (event.source === "extension") return { action: "continue" as const };
+
+		const pastedPath = extractTransientClipboardImagePath(event.text);
+		if (!pastedPath) return { action: "continue" as const };
+
+		const imageBase64 = await readImageFileBase64(pastedPath);
+		if (!imageBase64) {
+			return {
+				action: "transform" as const,
+				text: PASTED_IMAGE_PLACEHOLDER,
+			};
+		}
+
+		const content: Array<
+			| { type: "text"; text: string }
+			| { type: "image"; source: { type: "base64"; media_type: "image/png"; data: string } }
+		> = [
+			{ type: "text", text: PASTED_IMAGE_PLACEHOLDER },
+			{
+				type: "image",
+				source: {
+					type: "base64",
+					media_type: "image/png",
+					data: imageBase64,
+				},
+			},
+		];
+
+		if (!ctx.isIdle()) {
+			pi.sendUserMessage(content, { deliverAs: "followUp" });
+			ctx.ui.notify("Clipboard image queued as follow-up message.", "info");
+			return { action: "handled" as const };
+		}
+
+		pi.sendUserMessage(content);
+		return { action: "handled" as const };
+	});
+
 	const pasteClipboardImage = async (
 		ctx: {
 			ui: { notify: (message: string, level: "info" | "warning" | "error") => void; getEditorText: () => string; setEditorText: (text: string) => void };
@@ -76,8 +152,8 @@ export default function (pi: ExtensionAPI) {
 			return;
 		}
 
-		const editorText = ctx.ui.getEditorText().trim();
-		const inputText = args.trim() || editorText;
+		const editorText = ctx.ui.getEditorText();
+		const inputText = normalizeInputText(args) || normalizeInputText(editorText);
 		const content: Array<
 			| { type: "text"; text: string }
 			| { type: "image"; source: { type: "base64"; media_type: "image/png"; data: string } }
