@@ -42,6 +42,7 @@ in
 
     home.file = {
       ".pi/agent/AGENTS.md".source = ../../config/pi/agent/AGENTS.md;
+      ".pi/agent/mcp.json".source = ../../config/pi/agent/mcp.json;
       ".pi/agent/skills" = {
         source = ../../config/pi/agent/skills;
         recursive = true;
@@ -63,7 +64,7 @@ in
               $DRY_RUN_CMD cp "$managed_settings" "$settings_file"
               $DRY_RUN_CMD chmod 644 "$settings_file"
             else
-              if [ -z "$DRY_RUN" ]; then
+            if [ -z "''${DRY_RUN:-}" ]; then
                 ${pkgs.python3}/bin/python - <<'PY'
       import json
       import os

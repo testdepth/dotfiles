@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "adk-docs-mcp": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "mcpdoc",
+        "mcpdoc",
+        "--urls",
+        "AgentDevelopmentKit:https://adk.dev/llms.txt",
+        "--transport",
+        "stdio"
+      ]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    "google-maps": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google/mcp-server-google-maps"
+      ]
+    },
+    "google-knowledge": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google/mcp-server-google-knowledge"
+      ]
+    }
+  }
+}
