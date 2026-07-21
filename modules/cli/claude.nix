@@ -16,26 +16,6 @@ in
     home.file = {
       ".claude/CLAUDE.md".source = ../../.claude/CLAUDE.md;
       ".claude/.gitignore".source = ../../.claude/.gitignore;
-      ".claude/skills" = {
-        source = ../../.claude/skills;
-        recursive = true;
-      };
-      ".claude/commands" = {
-        source = ../../.claude/commands;
-        recursive = true;
-      };
-      ".claude/rules" = {
-        source = ../../.claude/rules;
-        recursive = true;
-      };
-      ".claude/agents" = {
-        source = ../../.claude/agents;
-        recursive = true;
-      };
-      ".claude/output-styles" = {
-        source = ../../.claude/output-styles;
-        recursive = true;
-      };
     };
 
     home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

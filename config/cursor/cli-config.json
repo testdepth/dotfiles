@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(ls)",
+      "Read(/Users/matkins1/Library/Mobile Documents/com~apple~CloudDocs/sharkvault/**)",
+      "Write(/Users/matkins1/Library/Mobile Documents/com~apple~CloudDocs/sharkvault/**)",
+      "StrReplace(/Users/matkins1/Library/Mobile Documents/com~apple~CloudDocs/sharkvault/**)",
+      "Glob(/Users/matkins1/Library/Mobile Documents/com~apple~CloudDocs/sharkvault/**)",
+      "Grep(/Users/matkins1/Library/Mobile Documents/com~apple~CloudDocs/sharkvault/**)",
+      "Shell(git)",
+      "Shell(mkdir)",
+      "Shell(ls -la)",
+      "Shell(head)",
+      "Shell(tail)"
+    ],
+    "deny": []
+  },
+  "version": 1,
+  "editor": {
+    "vimMode": false,
+    "defaultBehavior": "ide"
+  },
+  "hasChangedDefaultModel": false
+}

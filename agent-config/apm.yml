@@ -1,0 +1,13 @@
+name: matkins1/agent-config
+version: 0.1.0
+description: Personal agent primitives - skills and agents shared across Claude, Cursor, and Copilot
+author: Mark Atkins
+targets:
+  - claude
+  - cursor
+  - copilot
+dependencies:
+  apm: []
+  mcp: []
+includes: auto
+scripts: {}

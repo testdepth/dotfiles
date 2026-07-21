@@ -1,8 +1,13 @@
+---
+name: scaffold-project
+description: Scaffold a new project with fullstack-nix monorepo structure. Use when the user wants to create a new project or repository.
+allowed-tools: Read Write Glob Grep Shell
+argument-hint: ""
+---
+
 # scaffold-project
 
 Use this skill when the user wants to scaffold a new project, set up a repository with a fullstack monorepo structure, or create a new project from template.
-
-<command-name>scaffold-project</command-name>
 
 ## Instructions
 
@@ -119,61 +124,6 @@ Before scaffolding, ask the user about:
    - Contributing guidelines
 
 8. **Initialize git and add files**
-
-### README Template
-
-Generate a README following this structure:
-
-```markdown
-# {Project Name}
-
-{Brief description}
-
-## Prerequisites
-
-- [Nix](https://nixos.org/) with flakes enabled
-- [direnv](https://direnv.net/) (recommended)
-
-## Quick Start
-
-```bash
-# Clone the repository
-git clone {repo-url}
-cd {project-name}
-
-# Allow direnv (or run: nix develop --impure)
-direnv allow
-
-# Start all services
-devenv up
-```
-
-## Development
-
-### Project Structure
-
-{Explain each directory}
-
-### Running Services
-
-{How to start frontend, backend, etc.}
-
-### Testing
-
-{How to run tests}
-
-### Building
-
-{How to build for production}
-
-## Deployment
-
-{If infra present, explain deployment}
-
-## License
-
-{License type}
-```
 
 ### Important Notes
 

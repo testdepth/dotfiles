@@ -38,7 +38,6 @@
       gl = "git log --oneline -20";
       gp = "git pull";
       pew = "git push";
-      pub = "git push --set-upstream origin";
 
       # Editor
       v = "nvim";
@@ -48,6 +47,30 @@
       rm = "rm -i";
       cp = "cp -i";
       mv = "mv -i";
+    };
+
+    functions = {
+      # Push current branch and set upstream
+      pub = "git push --set-upstream origin (git branch --show-current)";
+
+      # Create a new branch and check it out
+      gn = ''
+        git branch $argv[1]
+        git checkout $argv[1]
+      '';
+
+      # Squash all commits since branching off, then force-push
+      # Usage: gsquash "feat: message" [base-branch]
+      gsquash = ''
+        set -l base_branch main
+        if test (count $argv) -ge 2
+          set base_branch $argv[2]
+        end
+        git fetch origin
+        git reset --soft origin/$base_branch
+        git commit -m "$argv[1]"
+        git push --force-with-lease origin (git branch --show-current)
+      '';
     };
 
     # Environment variables

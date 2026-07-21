@@ -125,7 +125,6 @@ in
     ./common/terraform.nix
     ./common/iam.nix
     ./common/storage.nix
-    # ... other common configs
   ];
 
   terraform.backend.gcs = {
@@ -135,7 +134,6 @@ in
   variable.project.default = projectId;
   variable.region.default = region;
 
-  # Environment-specific overrides
   gcp.iam.labels.environment = "dev";
   gcp.storage.labels.environment = "dev";
 }
@@ -207,67 +205,6 @@ The central repo provides these reusable steps:
 - `steps.notifyTeams { title, message, emails? }` — MS Teams notification
 - `steps.checkUnstagedFiles` — Verify no uncommitted terraform configs
 
-### CI Workflow Pattern
-```nix
-{ lib, steps }:
-{
-  name = "CI";
-  on = {
-    push.branches = [ "main" "develop" ];
-    pull_request = { };
-  };
-  permissions = { id-token = "write"; contents = "read"; };
-  concurrency = { group = "ci-$\{{ github.ref }}"; cancel-in-progress = true; };
-  jobs = {
-    backend = { /* test, lint, build */ };
-    frontend = { /* build */ };
-    infra = {
-      steps = [
-        steps.checkout
-        steps.setupSSH
-        steps.setupNix
-        steps.setupMagicCache
-        steps.setupGCPAuthDEV
-        { name = "Validate"; run = "nix run ./infra#infra-dev.init && nix run ./infra#infra-dev.plan"; }
-        steps.cleanupSSH
-      ];
-    };
-  };
-}
-```
-
-### Deploy Workflow Pattern
-```nix
-{ lib, steps }:
-let
-  environments = [ "dev" "prod" ];
-  defaultBranch = "develop";
-  defaultEnvironment = "dev";
-in
-{
-  name = "Deploy";
-  on = {
-    push.branches = [ defaultBranch ];
-    workflow_dispatch.inputs.environment = {
-      type = "choice"; default = defaultEnvironment; options = environments;
-    };
-  };
-  jobs.deploy = {
-    steps = [
-      steps.checkout steps.setupSSH steps.setupNix steps.setupMagicCache
-      steps.setupGCPAuthDEV steps.setupGcloud
-      (steps.deployInfra { inherit lib environments defaultEnvironment defaultBranch; })
-      steps.cleanupSSH
-    ];
-  };
-}
-```
-
-### Release Process
-- **Draft Release**: `workflow_dispatch` → creates `release/vX.Y.Z` branch, generates CHANGELOG, opens PR to `main`
-- **Publish Release**: Merging release PR to `main` → creates GitHub Release tag, merges `main` back to `develop`
-- Uses `Managed-Red-Bull-HQ/com.redbull.cid.action.request-github-token@v2` for GitHub App tokens
-
 ## Code Conventions
 
 ### Nix
@@ -288,22 +225,6 @@ in
 - **Commits**: Conventional Commits (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, `ci:`, `build:`, `release:`, `revert:`)
 - **Commit body**: Max 120 chars per line
 - **Gitlint**: Enforced via pre-commit hook
-- **PRs**: Use the template (CPCD ticket, change description, testing checklist)
-
-### PR Template
-```markdown
-# CPCD-*number*
-
-## Change
-*Describe the change and why you made certain design decisions.*
-
-## Testing
-- [ ] Tests added/updated
-- [ ] Manually tested
-
-## Checklist
-- [ ] Infrastructure changes tested in dev (if applicable)
-```
 
 ## When Invoked
 
@@ -322,5 +243,3 @@ in
 - **Reproducibility** — Declarative, version-controlled, locked dependencies
 - **Multi-Environment** — Same code, different configs for dev/stage/prod
 - **Backward Compatibility** — Don't break existing module configurations
-- **Documentation** — Document complex logic with comments; update READMEs
-

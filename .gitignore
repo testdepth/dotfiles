@@ -33,3 +33,7 @@ result-*
 
 # Local machine overrides
 .local.nix
+
+
+# APM dependencies
+apm_modules/

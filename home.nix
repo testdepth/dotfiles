@@ -65,7 +65,9 @@ in
   ];
 
   modules.cli.claude.enable = true;
+  modules.cli.cursor.enable = true;
   modules.cli.pi.enable = true;
+  modules.cli.apm.enable = true;
 
   # Let home-manager manage itself
   programs.home-manager.enable = true;

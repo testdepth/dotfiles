@@ -1,0 +1,7 @@
+# APM-generated outputs (populated by apm install at activation time)
+.claude/
+.cursor/
+.github/
+.agents/
+apm_modules/
+apm.lock.yaml

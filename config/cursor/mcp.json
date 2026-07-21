@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "nvim": {
+      "command": "npx",
+      "args": ["nvim-mcp-server"]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
+    "itdoc-redbull-com": {
+      "url": "https://devmcp-linux-web-app-p.azurewebsites.net/mcp/",
+      "type": "http"
+    }
+  }
+}
