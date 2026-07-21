@@ -67,6 +67,7 @@
           set base_branch $argv[2]
         end
         git fetch origin
+        git pull origin (git branch --show-current)
         git reset --soft origin/$base_branch
         git commit -m "$argv[1]"
         git push --force-with-lease origin (git branch --show-current)
